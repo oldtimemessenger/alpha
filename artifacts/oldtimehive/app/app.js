@@ -154,6 +154,7 @@ import { unreadNotificationCount, notificationBadgeMarkup } from "./notification
 import "./focus-policy.css";
 import "./rednote-unified-experience.css";
 import "./rednote-screen-system.css";
+import "./rednote-detail-screens.css";
 
 const $ = (s, r = document) => r.querySelector(s);
 const app = $("#app");
