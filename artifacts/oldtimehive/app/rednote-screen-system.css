@@ -354,3 +354,56 @@
 @media (prefers-reduced-motion:reduce) {
   #app .screen * { scroll-behavior:auto !important; transition-duration:.01ms !important; animation-duration:.01ms !important; }
 }
+
+/* Exact selectors used by the current Community and Messages modules. */
+#app .community-screen.cf-screen {
+  background:var(--ot-rn-canvas);
+  color:var(--ot-rn-ink);
+}
+#app .cf-screen .cf-feed-header {
+  border-color:var(--ot-rn-line);
+  background:rgba(255,255,255,.97);
+  box-shadow:none;
+}
+#app .cf-screen .cf-feed-tabs button[aria-current="page"] {
+  color:var(--ot-rn-blue);
+}
+#app .cf-screen .cf-feed-tabs button[aria-current="page"]::after {
+  background:var(--ot-rn-blue);
+}
+#app .cf-screen .cf-suggestions {
+  border-color:var(--ot-rn-line);
+  background:#fff;
+}
+#app .cf-screen .cf-people-rail article,
+#app .cf-screen .cf-club-card {
+  border-color:var(--ot-rn-line);
+  border-radius:14px;
+  background:#fff;
+  box-shadow:var(--ot-rn-shadow);
+}
+#app .cf-screen .cf-follow,
+#app .cf-screen .cf-primary {
+  background:var(--ot-rn-blue);
+  color:#fff;
+}
+#app .cf-screen .cf-list-card {
+  border-color:var(--ot-rn-line);
+}
+#app .cf-screen .cf-dialog {
+  border-color:var(--ot-rn-line);
+  border-radius:22px 22px 0 0;
+}
+#app .chat-list-screen .chat-list-heading {
+  border-color:var(--ot-rn-line);
+  background:rgba(255,255,255,.97);
+}
+#app .chat-list-screen .chat-inbox-row {
+  border-color:var(--ot-rn-line);
+  border-radius:15px;
+  box-shadow:var(--ot-rn-shadow);
+}
+#app .chat-settings-screen .chat-settings-titlebar {
+  border-color:var(--ot-rn-line);
+  background:rgba(255,255,255,.97);
+}
