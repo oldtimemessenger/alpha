@@ -1,0 +1,10 @@
+/* Remove visible focus rings throughout the app, including body-mounted sheets. */
+:root body :is(*):is(:focus, :focus-visible) {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Focus-within rings on surrounding controls are also suppressed. */
+:root body :focus-within { box-shadow: none !important; }

@@ -1,0 +1,315 @@
+/* One clean surface per sheet; keep the app's existing light/dark tokens. */
+:root {
+  --ot-sheet-radius:24px;
+  --ot-sheet-max-height:min(88dvh,760px);
+  --ot-sheet-padding-inline:16px;
+  --ot-sheet-padding-top:12px;
+  --ot-sheet-padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  --ot-sheet-handle-width:34px;
+  --ot-sheet-handle-height:4px;
+  --ot-sheet-title-size:17px;
+  --ot-sheet-body-size:14px;
+  --ot-sheet-line-height:1.4;
+  --ot-sheet-section-gap:12px;
+}
+.sheet.on {
+  background:rgba(14,16,20,.48);
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+}
+.sheet.on > .panel,
+.sheet.on > .share-recipient-panel {
+  border:0;
+  border-radius:var(--ot-sheet-radius) var(--ot-sheet-radius) 0 0;
+  box-shadow:none;
+}
+#app .sheet.on > .panel:not(.comment-panel) {
+  box-sizing:border-box;
+  flex:0 1 auto;
+  height:max-content;
+  min-height:0;
+  max-height:var(--ot-sheet-max-height)!important;
+  padding:var(--ot-sheet-padding-top) var(--ot-sheet-padding-inline) var(--ot-sheet-padding-bottom);
+  font-family:var(--font);
+  font-size:14px;
+  line-height:1.4;
+  color:#17191c;
+  background:#fff;
+  overflow-y:auto;
+}
+#app .sheet.on > .share-recipient-panel {
+  box-sizing:border-box;
+  max-height:var(--ot-sheet-max-height)!important;
+  padding:var(--ot-sheet-padding-top) var(--ot-sheet-padding-inline) var(--ot-sheet-padding-bottom);
+  color:#17191c;
+  background:#fff;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+}
+#app .sheet.on > .panel.thread-composer {
+  box-sizing:border-box;
+  flex:0 1 auto;
+  height:max-content;
+  min-height:0;
+  max-height:var(--ot-sheet-max-height)!important;
+  padding:var(--ot-sheet-padding-top) var(--ot-sheet-padding-inline) var(--ot-sheet-padding-bottom);
+  font-family:var(--font);
+  font-size:var(--ot-sheet-body-size);
+  line-height:var(--ot-sheet-line-height);
+  color:#17191c;
+  background:#fff;
+  overflow:hidden;
+}
+#app .sheet.on > .panel.comment-panel {
+  max-height:var(--ot-sheet-max-height)!important;
+}
+#app .sheet.on > .panel.comment-panel > .grab {
+  width:var(--ot-sheet-handle-width)!important;
+  height:var(--ot-sheet-handle-height)!important;
+  margin:2px auto 10px!important;
+  background:#b9bec5!important;
+}
+#app .sheet.on > :is(.panel,.share-recipient-panel) {
+  font-family:var(--font);
+  font-size:var(--ot-sheet-body-size);
+  line-height:var(--ot-sheet-line-height);
+}
+#app .sheet.on > :is(.panel,.share-recipient-panel) :is(h1,h2,h3,h4) {
+  font-family:var(--font)!important;
+  font-size:var(--ot-sheet-title-size)!important;
+  line-height:1.25!important;
+}
+#app .sheet.on > :is(.panel,.share-recipient-panel) :is(p,small,label,.hint,.helper,.description) {
+  font-family:var(--font)!important;
+  font-size:var(--ot-sheet-body-size)!important;
+  line-height:var(--ot-sheet-line-height)!important;
+}
+.sheet.on > :is(.panel,.share-recipient-panel) > .grab {
+  width:var(--ot-sheet-handle-width);
+  height:var(--ot-sheet-handle-height);
+  margin:2px auto 10px;
+  border-radius:999px;
+  background:#b9bec5;
+  opacity:1;
+}
+
+/* Keep share-sheet labels readable even when older dark-feed rules are loaded. */
+#app .sheet.on > .share-recipient-panel {
+  background:#fff!important;
+  color:#17191c!important;
+  opacity:1!important;
+}
+#app .sheet.on > .share-recipient-panel .srp-head h2,
+#app .sheet.on > .share-recipient-panel .srp-section-label,
+#app .sheet.on > .share-recipient-panel .srp-destination,
+#app .sheet.on > .share-recipient-panel .srp-destination > span:not(.srp-destination-icon) {
+  color:#17191c!important;
+  opacity:1!important;
+  -webkit-text-fill-color:#17191c;
+}
+#app .sheet.on > .share-recipient-panel .srp-close {
+  color:#17191c!important;
+  opacity:1!important;
+}
+
+/* Settings is one white page with clear rows, not stacked cards. */
+#app .account-settings-screen,
+#app .account-settings-screen .settings-scroll,
+#app .account-settings-screen .settings-content,
+#app .account-settings-screen .settings-home {
+  background:#fff;
+  box-shadow:none;
+}
+#app .account-settings-screen .settings-header,
+#app .account-settings-screen.settings-home-view .settings-header.settings-home-header {
+  border:0;
+  background:#fff;
+  -webkit-backdrop-filter:none;
+  backdrop-filter:none;
+}
+#app .account-settings-screen .settings-content .settings-group,
+#app .account-settings-screen .settings-content .settings-groups {
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+#app .account-settings-screen.settings-home-view .settings-groups { gap:17px; }
+#app .account-settings-screen .settings-content .settings-group > h2 {
+  margin:0 0 5px;
+  color:#58636c;
+  font-size:13px;
+  line-height:1.25;
+  font-weight:650;
+  letter-spacing:0;
+  text-transform:none;
+}
+#app .account-settings-screen .settings-content .settings-entry {
+  min-height:56px;
+  padding:9px 0;
+  border:0;
+  border-bottom:1px solid #eef0f2;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+#app .account-settings-screen .settings-content .settings-entry-icon,
+#app .account-settings-screen .settings-content .settings-entry-icon .navic {
+  background:transparent!important;
+}
+#app .account-settings-screen .settings-content .settings-entry-icon { color:#5b6670; }
+#app .account-settings-screen .settings-content .settings-entry-copy { min-width:0; }
+#app .account-settings-screen .settings-content .settings-entry-copy b { color:#17191c; }
+#app .account-settings-screen .settings-content .settings-entry-copy small {
+  max-width:100%;
+  color:#626b73;
+  overflow-wrap:anywhere;
+}
+#app .account-settings-screen .settings-content .settings-entry-value {
+  max-width:88px;
+  overflow:hidden;
+  color:#66717a;
+  font-size:12px;
+  text-overflow:ellipsis;
+}
+#app .account-settings-screen .settings-content .settings-entry-chevron {
+  background:transparent;
+  color:#929ba3;
+}
+#app .account-settings-screen .settings-save-bar {
+  border-top:1px solid #eceef1;
+  background:#fff;
+  box-shadow:none;
+}
+
+/* Edit Profile uses a continuous white canvas and one save action. */
+#app .edit-profile-screen {
+  --pe-bg:#fff;
+  --pe-card:#fff;
+  --pe-line:#eceef1;
+  --pe-text:#17191c;
+  --pe-muted:#68727b;
+  background:#fff;
+}
+#app .edit-profile-screen .profile-editor-header {
+  border-bottom:1px solid #eef0f2;
+  background:#fff;
+  box-shadow:none;
+}
+#app .edit-profile-screen .edit-profile-scroll {
+  padding:4px 16px 20px;
+  background:#fff;
+}
+#app .edit-profile-screen .profile-editor-avatar-section,
+#app .edit-profile-screen .profile-editor-fields,
+#app .edit-profile-screen .profile-editor-interests {
+  margin-right:0;
+  margin-left:0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+#app .edit-profile-screen .profile-editor-avatar-section {
+  gap:12px;
+  padding:14px 0 16px;
+  margin-bottom:0;
+  border-bottom:1px solid #eceef1;
+}
+#app .edit-profile-screen .profile-editor-avatar { border:0; }
+#app .edit-profile-screen .profile-editor-photo-action {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-height:38px;
+  border:1px solid #dfe3e8;
+  border-radius:10px;
+  background:transparent;
+  color:#17191c;
+}
+#app .screen.edit-profile-screen .profile-editor-photo-action { color:#17191c; }
+#app .edit-profile-screen .profile-editor-photo-action .navic { width:16px; height:16px; }
+#app .edit-profile-screen .profile-editor-fields {
+  margin:0;
+  overflow:visible;
+}
+#app .edit-profile-screen .profile-editor-field,
+#app .edit-profile-screen .profile-editor-bio {
+  padding:12px 0 10px;
+  border-bottom:1px solid #eceef1;
+  background:transparent;
+}
+#app .edit-profile-screen .profile-editor-field:focus-within,
+#app .edit-profile-screen .profile-editor-bio:focus-within {
+  border-bottom-color:#9bb8ed;
+  background:transparent;
+}
+#app .edit-profile-screen .profile-editor-field > input,
+#app .edit-profile-screen .profile-editor-bio textarea {
+  border:0;
+  background:transparent;
+  color:#17191c;
+}
+#app .edit-profile-screen .profile-editor-field > input:focus-visible,
+#app .edit-profile-screen .profile-editor-bio textarea:focus-visible {
+  outline:0;
+  box-shadow:none;
+}
+#app .edit-profile-screen .profile-editor-emoji {
+  border:0;
+  background:transparent;
+}
+#app .edit-profile-screen .profile-editor-interests {
+  padding:16px 0;
+  margin:0;
+}
+#app .edit-profile-screen .profile-editor-footer {
+  border-top:1px solid #eceef1;
+  background:#fff;
+  box-shadow:none;
+}
+#app .edit-profile-screen .profile-editor-save {
+  width:100%;
+  min-height:46px;
+  border-radius:12px;
+  box-shadow:none;
+}
+
+/* Reused icons and interest marks are transparent on both light and dark UI. */
+:is(.settings-entry-icon,.interest-dropdown-mark,.interest-group-mark,.interest-option-mark,.interest-option-check) {
+  background:transparent!important;
+  box-shadow:none!important;
+}
+
+/* Shared page hierarchy across settings and profile editing. */
+#app .settings-screen h1,
+#app .edit-profile-screen h1,
+#app .settings-screen .page-title,
+#app .edit-profile-screen .page-title {
+  margin:0;
+  color:var(--text,#17191c);
+  font-size:var(--ot-font-page,20px);
+  font-weight:700;
+  line-height:1.2;
+  letter-spacing:-.02em;
+}
+#app .settings-screen .page-subtitle,
+#app .edit-profile-screen .page-subtitle,
+#app .settings-screen .settings-description,
+#app .edit-profile-screen .settings-description {
+  color:var(--text-muted,#6f747b);
+  font-size:var(--ot-font-caption,13px);
+  line-height:1.45;
+}
+#app .settings-screen,
+#app .edit-profile-screen { background:var(--app-surface,#fff); }
+
+@media(max-width:360px) {
+  #app .account-settings-screen .settings-content .settings-entry {
+    grid-template-columns:22px minmax(0,1fr) auto 14px;
+    column-gap:8px;
+  }
+  #app .account-settings-screen .settings-content .settings-entry-copy small { font-size:12px; }
+  #app .edit-profile-screen .edit-profile-scroll { padding-right:12px; padding-left:12px; }
+}

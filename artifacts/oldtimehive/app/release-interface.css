@@ -1,0 +1,22 @@
+.on[data-tab="chat"] svg[data-icon="messages"] .conversation-front { fill:currentColor; }
+svg[data-icon="messages"] path:not(.conversation-front) { fill:none; }
+.community-header .community-new-post.compose-trigger{position:relative;flex:none;display:grid;place-items:center;width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:0;background:transparent;color:var(--text,#17191d);box-shadow:none}
+.community-header .community-new-post.compose-trigger:before{display:none}.community-header .community-new-post.compose-trigger svg{width:24px;height:24px;stroke-width:1.75}.community-header .community-new-post.compose-trigger:active,.community-header .community-new-post.compose-trigger[aria-expanded=true]{background:transparent;color:var(--text,#17191d)}
+.search-header-field{flex:1;min-width:0}.search-header-field label{margin:0!important;max-width:100%;min-width:0;border:0!important;border-radius:0!important;box-shadow:none!important;background:none!important}.search-header-field input{width:100%;min-width:0;min-height:44px;border:0!important;outline:0!important;box-shadow:none!important;font-size:16px;background:transparent;color:inherit}.search-app-header .community-header-actions{flex:none}.cf-feed-header{min-width:0;overflow:hidden}.cf-feed-tabs{min-width:0;overflow-x:auto;scrollbar-width:none;mask-image:linear-gradient(to right,#000 94%,transparent)}.cf-feed-tabs button{flex-shrink:0;white-space:nowrap;min-height:48px}.cf-feed-tabs [aria-current=page]:after{transition:none}
+.community-note-composer button,.community-note-composer svg{color:var(--text,#17191d)}.settings-entry{min-height:56px}.acl button:focus-visible,.compose-trigger:focus-visible{outline:2px solid var(--accent,#1456d9);outline-offset:3px}
+
+#app .community-screen .community-header :is(#community-note-open, [data-cf-compose])[aria-label="New post"],
+#app .community-screen .community-header :is(#community-note-open, [data-cf-compose])[aria-label="New post"]:active,
+#app .community-screen .community-header :is(#community-note-open, [data-cf-compose])[aria-label="New post"][aria-expanded="true"] {
+  width:44px !important;
+  min-width:44px !important;
+  height:44px !important;
+  min-height:44px !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  color:#17191c !important;
+  box-shadow:none !important;
+}
+#app .community-screen .community-header :is(#community-note-open, [data-cf-compose])[aria-label="New post"]::before { display:none !important; }

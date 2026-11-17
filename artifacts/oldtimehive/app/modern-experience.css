@@ -1,0 +1,130 @@
+/* Approved canvas direction, adapted to existing screens and real data.
+   No layout replacement, editor overrides, or new gesture handlers. */
+:root {
+  --story-ring: linear-gradient(#f6d646, #f6d646);
+  --notification-accent: #e52e43;
+  --notification-red: #e52e43;
+}
+
+/* Keep Home bright and lightweight; the header deliberately has no backplate. */
+#app .phone:has(.home-screen[data-rectangle-feed="true"]),
+#app .home-screen[data-rectangle-feed="true"] {
+  background: #fff !important;
+  color: #17191c;
+}
+#app .home-screen[data-rectangle-feed="true"] #feed {
+  background: transparent !important;
+  color: #17191c;
+}
+#app .home-screen[data-rectangle-feed="true"] :is(.home-discovery-header,.home-primary-row) {
+  --text: #17191c;
+  --muted: #707783;
+  --accent: #17191c;
+  color: #17191c !important;
+  background: transparent !important;
+  background-image: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  text-shadow: none;
+}
+#app .home-screen[data-rectangle-feed="true"] .home-discovery-header::before,
+#app .home-screen[data-rectangle-feed="true"] .home-discovery-header::after {
+  display: none !important;
+}
+#app .home-screen[data-rectangle-feed="true"] :is(.app-search-shortcut,.home-notifications-button) {
+  background: transparent !important;
+  color: #17191c !important;
+}
+#app .home-screen[data-rectangle-feed="true"] .home-view-tab { color: #707783 !important; }
+#app .home-screen[data-rectangle-feed="true"] .home-view-tab.on { color: #17191c !important; }
+#app .home-screen[data-rectangle-feed="true"] .home-view-tab.on::after { background: #17191c !important; }
+#app .home-screen[data-rectangle-feed="true"] .home-feed-post-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: transparent;
+  border-bottom-color: #e8ebf2;
+}
+#app .home-screen[data-rectangle-feed="true"] :is(.profile-post-author,.profile-post-caption,.profile-post-text-preview) {
+  color: #17191c;
+}
+#app .home-screen[data-rectangle-feed="true"] :is(.profile-post-handle,.profile-post-byline time) { color: #707783; }
+#app .home-screen[data-rectangle-feed="true"] .profile-post-media { background: #f5f7fc; border-color: #e8ebf2; }
+#app .home-screen[data-rectangle-feed="true"] .profile-post-media.is-text { background: transparent; }
+#app .home-screen[data-rectangle-feed="true"] .profile-post-timeline-avatar { background: #f0f1f4; }
+#app .home-screen[data-rectangle-feed="true"] :is(.empty,.relationship-feed-empty,.interest-feed-empty,.cloud-feed-error,.profile-infinite-sentinel) {
+  color: #6b6f76;
+  background: transparent;
+}
+
+/* Keep all existing Story visibility and owner permissions intact. */
+#app .home-story-avatar { border-color: #f6d646 !important; }
+#app .home-story-new { background: #f6d646; color: #17191c; }
+#app .profile-story-ring { border-color: #f6d646 !important; }
+#app .ring:not(.seen) { background: var(--story-ring); }
+#app :is(.blast-story-ring.has-story,.blast-story-ring.is-close-friends) {
+  border-color: #f6d646 !important;
+}
+
+#app .home-notifications-button .home-notification-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: -3px;
+  width: auto;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 12px;
+  background: #e52e43 !important;
+  color: #fff !important;
+  font: 750 10px/1 var(--font, system-ui, sans-serif);
+  pointer-events: none;
+  text-shadow: none;
+}
+#app :is(.notification-row.is-unread,.notification-category) { --accent: #e52e43; }
+#app .notification-row.is-unread { background: #fafafa; }
+
+/* Feed overflow dots stay white on media and feed surfaces; menu rows keep their own palette. */
+#app .post-viewer-screen.post-viewer-has-media:not(.post-viewer-community) .media-post-options > summary,
+#app .post-viewer-actions-menu > summary,
+#app .screen .post-actions-menu > summary,
+#app .screen .community-post-actions-menu > summary {
+  color:#fff!important;
+  opacity:1!important;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.72))!important;
+  background:transparent!important;
+}
+#app .post-viewer-screen.post-viewer-has-media:not(.post-viewer-community) .media-post-options > summary .navic,
+#app .post-viewer-actions-menu > summary .navic,
+#app .screen .post-actions-menu > summary .navic,
+#app .screen .community-post-actions-menu > summary .navic {
+  color:#fff!important;
+  opacity:1!important;
+}
+#app .post-viewer-screen.post-viewer-has-media:not(.post-viewer-community) .media-post-options > summary .navic circle,
+#app .post-viewer-actions-menu > summary .navic circle,
+#app .screen .post-actions-menu > summary .navic circle,
+#app .screen .community-post-actions-menu > summary .navic circle {
+  fill:#fff!important;
+  stroke:none!important;
+}
+
+/* Consistent supporting controls without altering screen structure. */
+#app :is(.settings-screen,.profile-editor,.notifications-screen,.account-professional-screen) {
+  font-family: var(--font, system-ui, sans-serif);
+}
+#app :is(.settings-screen,.profile-editor,.notifications-screen) .navic {
+  stroke-width: 1.75;
+}
+#app :is(.listbtn,.notification-category,.post-actions-popover button,.settings-row) {
+  transition: background-color 140ms ease, color 140ms ease;
+}
+#app :is(.listbtn,.notification-category,.settings-row):active { background-color: #f4f5f6; }
+@media (prefers-reduced-motion: reduce) {
+  #app :is(.listbtn,.notification-category,.post-actions-popover button,.settings-row) { transition: none; }
+}

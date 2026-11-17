@@ -1,0 +1,260 @@
+@import "./settings-notification-refinement.css";
+
+/*
+ * Shared menu and dropdown rhythm.
+ * Ordinary app menus use one compact type scale and white surface; immersive
+ * Story/media, camera, and the creative editor keep their contextual palettes.
+ */
+#app {
+  --ot-menu-surface: #fff;
+  --ot-menu-text: var(--ot-color-text, #17191c);
+  --ot-menu-muted: var(--ot-color-muted, #6b6f76);
+  --ot-menu-divider: #eceef0;
+}
+
+#app :is(
+  .post-actions-menu-items,
+  .profile-post-menu-items,
+  .post-edit-menu-items,
+  .profile-action-dropdown-panel,
+  .discovery-browse-menu,
+  .chat-options-menu,
+  .chat-picker-actions,
+  .chat-settings-options,
+  .comment-action-list,
+  .drawer-links,
+  .notification-activity-options,
+  .sp-menu,
+  .cf-menu,
+  .interest-dropdown,
+  .interest-dropdown-body
+):not(.creative-editor *) {
+  font-family: var(--font);
+  font-size: var(--ot-font-menu);
+  line-height: var(--ot-line-menu);
+}
+
+/* White ordinary dropdown/popup surfaces. Explicitly exclude immersive and
+   authored-media contexts whose contrast is part of their established design. */
+#app :is(
+  .post-actions-menu-items,
+  .profile-post-menu-items,
+  .post-edit-menu-items,
+  .profile-action-dropdown-panel,
+  .discovery-browse-menu,
+  .chat-options-menu,
+  .interest-dropdown-body,
+  .comment-action-list,
+  .drawer-links
+):not(.media-feed-phone *):not(.post-viewer-screen *):not(.clip *):not(#storyview *):not(.camera-screen *):not(.creative-editor *) {
+  background: var(--ot-menu-surface);
+  color: var(--ot-menu-text);
+}
+
+#app :is(
+  .post-actions-menu-items,
+  .profile-post-menu-items,
+  .post-edit-menu-items,
+  .profile-action-dropdown-panel,
+  .discovery-browse-menu,
+  .chat-options-menu,
+  .chat-picker-actions,
+  .chat-settings-options,
+  .comment-action-list,
+  .cf-menu,
+  .drawer-links,
+  .sp-menu
+) :is(button, [role="menuitem"], a) {
+  font-family: var(--font);
+  font-size: var(--ot-font-menu);
+  font-weight: var(--ot-weight-menu);
+  line-height: var(--ot-line-menu);
+  color: inherit;
+}
+
+#app :is(
+  .post-actions-menu-items,
+  .profile-post-menu-items,
+  .post-edit-menu-items,
+  .profile-action-dropdown-panel,
+  .discovery-browse-menu,
+  .chat-options-menu,
+  .chat-picker-actions,
+  .chat-settings-options,
+  .comment-action-list,
+  .cf-menu
+) :is(button, [role="menuitem"], a) .navic,
+#app .profile-action-dropdown-item .navic {
+  width: var(--ot-menu-icon);
+  height: var(--ot-menu-icon);
+  flex: 0 0 var(--ot-menu-icon);
+}
+
+#app :is(
+  .post-actions-menu-items,
+  .profile-post-menu-items,
+  .post-edit-menu-items
+) button {
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+#app .profile-action-dropdown-panel {
+  padding: 6px 8px;
+  border-color: var(--ot-color-border, #e5e7eb);
+  border-radius: 18px;
+}
+
+#app .profile-action-dropdown-item {
+  min-height: 48px;
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  gap: 10px;
+  padding: 0 10px;
+  border-radius: 11px;
+  background: transparent;
+  font-size: var(--ot-font-menu);
+  font-weight: var(--ot-weight-menu);
+}
+
+#app .profile-action-dropdown-item .profile-action-selected {
+  width: 20px;
+  height: 20px;
+}
+
+#app .profile-action-dropdown-item .profile-action-selected .navic {
+  width: 18px;
+  height: 18px;
+}
+
+#app .profile-action-dropdown-item:not(.is-report):hover,
+#app :is(.post-actions-menu-items, .profile-post-menu-items, .post-edit-menu-items) button:hover {
+  background: #f3f5f7;
+}
+
+#app :is(.chat-options-menu, .interest-dropdown-body, .comment-action-list, .drawer-links) {
+  background: #fff;
+  color: var(--ot-menu-text);
+}
+
+#app :is(
+  .profile-action-dropdown-item,
+  .discovery-browse-menu button,
+  .chat-picker-action,
+  .chat-settings-options button,
+  .chat-option,
+  .chat-folder-options button,
+  .notification-activity-options .listbtn,
+  .drawer-link,
+  .sp-menu button,
+  .cf-menu > button,
+  .interest-choice-groups .interest-option,
+  .interest-choice-groups .signup-interest,
+  .interest-choice-groups .profile-interest-option
+) {
+  font-size: var(--ot-font-menu);
+  line-height: var(--ot-line-menu);
+}
+
+/* Menu descriptors and helper lines stay subordinate, but share one size. */
+#app :is(
+  .profile-action-dropdown-item small,
+  .discovery-browse-label,
+  .interest-dropdown-copy small,
+  .interest-group-heading,
+  .interest-selected-preview,
+  .interest-custom-entry > label,
+  .interest-entry-status,
+  .cf-menu small,
+  .chat-filter-section-title,
+  .chat-options-menu :is(p, small),
+  .chat-settings-options small,
+  .message-menu-detail
+) {
+  font-size: var(--ot-font-menu-meta);
+  line-height: 1.4;
+}
+
+/* Icons sit on a shared optical box across comparable menu rows. */
+#app :is(
+  .interest-dropdown-mark .navic,
+  .interest-group-mark .navic,
+  .interest-option-mark .navic,
+  .interest-option-check .navic,
+  .interest-subgroup-mark .navic,
+  .cf-menu .navic,
+  .drawer-link .navic,
+  .sp-menu .navic,
+  .chat-picker-action .navic,
+  .chat-settings-options .navic
+) {
+  width: var(--ot-menu-icon);
+  height: var(--ot-menu-icon);
+  flex: 0 0 var(--ot-menu-icon);
+}
+
+@media (max-width: 360px) {
+  #app .interest-dropdown-copy b,
+  #app .interest-choice-groups :is(.interest-option, .signup-interest, .profile-interest-option) {
+    font-size: var(--ot-font-menu);
+  }
+}
+
+/* Keep option rows compact and consistent without changing editor or media controls. */
+#app :is(
+  .post-actions-menu-items,
+  .profile-post-menu-items,
+  .post-edit-menu-items,
+  .profile-action-dropdown-panel,
+  .discovery-browse-menu,
+  .chat-picker-actions,
+  .chat-settings-options,
+  .comment-action-list,
+  .drawer-links,
+  .notification-activity-options,
+  .sp-menu,
+  .cf-menu,
+  .interest-dropdown-body,
+  .interest-choice-groups
+) {
+  row-gap: 2px;
+}
+
+#app :is(
+  .post-actions-menu-items,
+  .profile-post-menu-items,
+  .post-edit-menu-items
+) button,
+#app .profile-action-dropdown-item,
+#app .discovery-browse-menu button,
+#app :is(.chat-option,.chat-picker-action,.chat-settings-options button),
+#app .comment-action-list button,
+#app .drawer-links .drawer-link,
+#app .notification-activity-options .listbtn,
+#app .sp-menu button,
+#app .cf-menu > button,
+#app .interest-dropdown-body :is(button,[role="option"]),
+#app .interest-choice-groups :is(.interest-option,.signup-interest,.profile-interest-option) {
+  box-sizing: border-box;
+  min-height: 44px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-family: var(--font);
+  font-size: var(--ot-font-menu);
+  line-height: var(--ot-line-menu);
+}
+
+/* Standard app disclosures use the same white surface and menu type size. */
+#app details:not(.ce-menu):not(.ce-camera-settings):not(.ce-details-diagnostic)
+  :is(summary, p, li, small, label, button, a, time):not(.ot-quote-more *):not(.ot-quote-caption-more *):not(.creative-editor *) {
+  font-family: var(--font);
+  font-size: var(--ot-font-menu);
+  line-height: var(--ot-line-menu);
+}
+
+#app .phone details:not(.ce-menu):not(.ce-camera-settings):not(.ce-details-diagnostic)
+  :not(.ot-quote-more):not(.ot-quote-caption-more):not(.cs-cam-options):not(.creative-editor *) {
+  color: var(--ot-menu-text);
+}
+

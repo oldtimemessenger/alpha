@@ -1,0 +1,276 @@
+/* Preserve compact control placement; media viewers occupy the whole screen. */
+.post-viewer-screen.post-viewer-media {
+  position:fixed; inset:0; z-index:60; width:100%; height:100dvh;
+  margin:0; padding:0; border:0; border-radius:0; background:#000; color:#fff;
+}
+.post-viewer-screen.post-viewer-media .post-viewer-topbar {
+  position:absolute; inset:0 0 auto; z-index:5; border:0;
+  background:transparent; color:#fff;
+}
+.post-viewer-screen.post-viewer-media :is(.post-viewer-back,.post-viewer-share,.post-viewer-identity) { color:#fff; }
+.post-viewer-screen.post-viewer-media .post-viewer-identity small { color:rgba(255,255,255,.75); }
+.post-viewer-screen.post-viewer-media .post-viewer-identity b { color:#fff; }
+.post-viewer-screen.post-viewer-media .post-viewer-feed { position:absolute; inset:0; height:100%; overflow:hidden; background:#000; }
+.post-viewer-screen.post-viewer-media .clip.post-detail {
+  position:absolute; inset:0; width:100%; height:100dvh!important; min-height:100dvh;
+  margin:0; padding:0; border:0; border-radius:0; background:#000; color:#fff;
+}
+.post-viewer-screen.post-viewer-media .clip.post-detail > :is(.fullimg,video,.post-carousel) {
+  position:absolute!important; inset:0!important; width:100%; height:100%!important;
+  max-height:none!important; object-fit:contain!important; border-radius:0;
+}
+.post-viewer-screen.post-viewer-media .post-carousel :is(img,video) { width:100%; height:100%; object-fit:contain; border-radius:0; }
+.post-viewer-screen.post-viewer-media .post-viewer-media-info {
+  position:absolute; z-index:3; left:12px; right:60px; bottom:calc(82px + env(safe-area-inset-bottom));
+  color:#fff; background:none; border:0; text-shadow:0 1px 1px rgba(0,0,0,.6);
+}
+.post-viewer-screen.post-viewer-media :is(.meta,.meta p,.soundbar,.post-likes-row) { color:#fff; background:transparent; border:0; }
+.post-viewer-screen.post-viewer-media .post-viewer-footer {
+  position:absolute; inset:auto 0 0; z-index:5; border:0;
+  padding:12px 12px calc(12px + env(safe-area-inset-bottom));
+  background:linear-gradient(0deg,rgba(0,0,0,.78),rgba(0,0,0,.18));
+}
+.post-viewer-screen.post-viewer-media .post-viewer-footer :is(input,textarea) {
+  color:#fff; background:rgba(0,0,0,.24); border-color:rgba(255,255,255,.55);
+}
+.post-viewer-screen.post-viewer-media .post-viewer-footer :is(input,textarea)::placeholder { color:rgba(255,255,255,.8); }
+.post-viewer-screen.post-viewer-media #post-viewer-composer {
+  color:#fff; background:rgba(0,0,0,.3); border:1px solid rgba(255,255,255,.55); border-radius:28px;
+}
+.story-live-message.is-faded { animation:none!important; }
+
+/* This surface must override the light form/pill defaults, not inherit them. */
+#app .post-viewer-screen.post-viewer-media {
+  background:#000!important; color:#fff!important; border-radius:0!important;
+}
+#app .post-viewer-media .post-viewer-topbar {
+  background:transparent!important;
+  border:0!important; color:#fff!important;
+}
+#app .post-viewer-media :is(.post-viewer-back,.post-viewer-share,.post-viewer-identity b) { color:#fff!important; }
+#app .post-viewer-media :is(.post-viewer-feed,.clip.post-detail) { background:#000!important; border-radius:0!important; }
+#app .post-viewer-media .post-viewer-feed { padding:0!important; margin:0!important; width:100%!important; }
+#app .post-viewer-media .clip.post-detail { margin:0!important; width:100%!important; max-width:none!important; border:0!important; }
+#app .post-viewer-media .clip.post-detail > :is(.fullimg,video,.post-carousel) { width:100%!important; max-width:none!important; margin:0!important; border-radius:0!important; }
+#app .post-viewer-media .post-viewer-media-info { bottom:calc(66px + env(safe-area-inset-bottom))!important; }
+#app .post-viewer-media .post-viewer-footer { background:#000!important; border:0!important; }
+#app .post-viewer-media #post-viewer-composer { background:#151515!important; border:0!important; box-shadow:none!important; }
+#app .post-viewer-media #post-viewer-composer-input,
+#app .post-viewer-media #post-viewer-composer-input:focus {
+  background:transparent!important; color:#fff!important; -webkit-text-fill-color:#fff;
+  caret-color:#fff; border:0!important; outline:none!important; box-shadow:none!important;
+}
+
+/* Authoritative geometry: the older detail scene must not turn this viewer
+   back into a header + inset rounded card + separate composer layout. */
+#app .post-viewer-screen.post-viewer-media .post-viewer-topbar {
+  position:absolute; inset:0 0 auto; z-index:5;
+  padding:max(6px,env(safe-area-inset-top,0px)) 8px 6px;
+}
+#app .post-viewer-screen.post-viewer-media .post-viewer-feed {
+  position:absolute; inset:0; flex:none; height:100%; min-height:0;
+  width:100%; margin:0!important; padding:0!important; border:0; border-radius:0;
+}
+#app .post-viewer-screen.post-viewer-media .clip.post-detail {
+  position:absolute; inset:0; height:100%!important; min-height:0;
+  max-height:none; overflow:hidden; padding:0;
+}
+#app .post-viewer-screen.post-viewer-media .clip.post-detail > .fullimg,
+#app .post-viewer-screen.post-viewer-media .clip.post-detail > video,
+#app .post-viewer-screen.post-viewer-media .clip.post-detail .post-carousel > :is(.fullimg,video) {
+  width:100%!important; height:100%!important; object-fit:contain!important;
+  object-position:center; border-radius:0; margin:0;
+}
+#app .post-viewer-screen.post-viewer-media .post-viewer-media-backdrop { display:block; }
+#app .post-viewer-screen.post-viewer-media .post-viewer-footer.post-viewer-composer {
+  position:absolute; inset:auto 0 0; z-index:5; flex:none;
+  padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px));
+  background:transparent!important;
+}
+#app .post-viewer-screen.post-viewer-media .post-viewer-composer-form {
+  min-height:40px; height:40px; padding:3px; border-radius:24px;
+}
+#app .post-viewer-screen.post-viewer-media .post-viewer-composer-form > img,
+#app .post-viewer-screen.post-viewer-media .post-viewer-composer-form .post-viewer-footer-send {
+  width:32px; height:32px; flex:0 0 32px;
+}
+
+/* Keep each scrolled post's author and caption inside its own visible info block. */
+#app .post-viewer-screen.post-viewer-media .post-viewer-media-info {
+  position:absolute!important;
+  z-index:6!important;
+  display:flex!important;
+  flex-direction:column;
+  gap:4px;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto;
+  overflow:visible!important;
+}
+#app .post-viewer-screen.post-viewer-media .post-viewer-media-info > .meta {
+  position:relative!important;
+  inset:auto!important;
+  z-index:1;
+  display:block!important;
+  width:100%!important;
+  max-height:min(38dvh,360px)!important;
+  margin:0!important;
+  padding:0!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  visibility:visible!important;
+  opacity:1!important;
+  background:transparent!important;
+}
+#app .post-viewer-screen.post-viewer-media .post-viewer-media-info > .soundbar {
+  position:relative!important;
+  inset:auto!important;
+  display:flex!important;
+  width:100%;
+  max-width:100%!important;
+  margin:2px 0 0!important;
+}
+
+/* Search/Discover viewers are a native vertical feed, not three cards layered
+   in the single-post viewer. Keep neighboring posts in document flow so each
+   snap shows exactly one post and its own metadata. */
+#app .post-viewer-screen.post-viewer-media.post-viewer-explore .post-viewer-feed {
+  position:absolute!important; inset:0!important; display:block!important;
+  width:100%!important; height:100%!important; min-height:0!important;
+  margin:0!important; padding:0!important; border:0!important; border-radius:0!important;
+  overflow-x:hidden!important; overflow-y:auto!important;
+  overscroll-behavior-y:contain; -webkit-overflow-scrolling:touch;
+  scroll-snap-type:y mandatory; touch-action:pan-y;
+}
+#app .post-viewer-screen.post-viewer-media.post-viewer-explore .post-viewer-feed > .clip.post-detail {
+  position:relative!important; inset:auto!important; display:block!important;
+  width:100%!important; height:100%!important; min-height:100%!important;
+  max-height:none!important; flex:0 0 100%!important;
+  margin:0!important; border:0!important; border-radius:0!important;
+  scroll-snap-align:start; scroll-snap-stop:always;
+}
+#app .post-viewer-screen.post-viewer-explore .clip.motion-feed-entry { animation:none!important; }
+
+/* Profile playback keeps its three post actions in the bottom row beside the
+   comment prompt, matching the supplied full-screen reference. */
+#app .post-viewer-screen.post-viewer-profile .post-viewer-profile-footer {
+  position:absolute!important; inset:auto 0 0!important; z-index:8;
+  display:flex!important; flex-direction:row; align-items:center;
+  gap:6px; box-sizing:border-box; width:100%;
+  padding:6px 12px calc(6px + env(safe-area-inset-bottom,0px));
+  background:linear-gradient(0deg,rgba(0,0,0,.92),rgba(0,0,0,.12))!important;
+}
+#app .post-viewer-screen.post-viewer-profile .post-viewer-profile-footer > .post-viewer-profile-prompt {
+  display:flex; flex:1 1 0%; align-items:center;
+  width:auto; min-width:0; height:42px; min-height:42px;
+  gap:8px; padding:0 11px; border:0; border-radius:24px;
+  background:rgba(24,24,24,.96)!important; color:rgba(255,255,255,.68);
+  box-sizing:border-box; overflow:hidden;
+  font:500 14px var(--font,system-ui,sans-serif); text-align:left;
+}
+#app .post-viewer-screen.post-viewer-profile .post-viewer-composer-pencil {
+  display:grid; flex:0 0 18px; width:18px; height:18px;
+  place-items:center; color:rgba(255,255,255,.7);
+}
+#app .post-viewer-screen.post-viewer-profile .post-viewer-composer-pencil .navic {
+  width:17px; height:17px;
+}
+#app .post-viewer-screen.post-viewer-profile .post-viewer-profile-prompt > span:last-child {
+  min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+#app .post-viewer-screen.post-viewer-profile .post-viewer-profile-footer > .rail {
+  position:relative!important; inset:auto!important; z-index:9;
+  display:flex!important; flex:0 0 auto; flex-direction:row!important;
+  align-items:center; justify-content:flex-end; gap:4px;
+  width:auto!important; margin:0!important; padding:0!important;
+  overflow:visible; border:0!important; background:transparent!important;
+}
+#app .post-viewer-screen.post-viewer-profile .post-viewer-profile-footer > .rail .rail-sound-toggle {
+  display:none!important;
+}
+#app .post-viewer-screen.post-viewer-profile .post-viewer-profile-footer > .rail .act {
+  display:flex!important; flex:0 0 auto; flex-direction:row!important;
+  align-items:center; justify-content:center; gap:3px;
+  box-sizing:border-box; min-width:30px; min-height:42px; height:42px; max-height:42px; padding:0 1px;
+  color:#fff; font-size:12px; line-height:1;
+  text-shadow:0 1px 3px #0009; white-space:nowrap;
+}
+#app .post-viewer-screen.post-viewer-profile .post-viewer-profile-footer > .rail .act .navic {
+  flex:0 0 auto; width:27px; height:27px;
+}
+#app .post-viewer-screen.post-viewer-profile .post-viewer-profile-footer > .rail .act-like-group {
+  display:flex!important; flex:0 0 auto; flex-direction:row!important;
+  align-items:center; gap:2px; width:auto!important; min-height:42px!important;
+}
+#app .post-viewer-screen.post-viewer-profile .post-viewer-profile-footer > .rail .act-like-group > .act[data-like] {
+  display:grid!important; flex:0 0 34px; width:34px!important; min-width:34px!important;
+  height:42px!important; min-height:42px!important; padding:0!important;
+}
+#app .post-viewer-screen.post-viewer-profile .post-viewer-profile-footer > .rail .act-like-group > .act[data-like] .navic {
+  width:29px!important; height:29px!important;
+}
+#app .post-viewer-screen.post-viewer-profile .post-viewer-profile-footer > .rail .act-like-group > .act-count {
+  flex:0 0 auto; min-width:max-content; min-height:0!important; height:auto;
+  padding:0; color:#fff; font-size:12px; line-height:1;
+  font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+#app .post-viewer-screen.post-viewer-profile .post-viewer-profile-footer > .rail .act > .act-count {
+  flex:0 0 auto; min-width:max-content; font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+
+/* Home feed switching is available only inside the full-screen viewer. */
+#app .post-viewer-screen.home-feed-viewer .post-viewer-topbar {
+  display:flex; align-items:center; gap:6px;
+}
+#app .post-viewer-screen.home-feed-viewer .home-viewer-switcher {
+  display:flex; flex:1 1 auto; align-items:center; justify-content:center;
+  min-width:0; overflow:visible; white-space:nowrap;
+  /* The nav fills the flex space between Back and the right-side dots.
+     Let only the actual tabs receive taps so this empty area cannot cover
+     the full-screen post menu on touch browsers. */
+  pointer-events:none!important;
+}
+#app .post-viewer-screen.home-feed-viewer .home-viewer-switcher-tabs {
+  display:flex; flex:0 1 auto; align-items:center; justify-content:center; gap:clamp(12px,3vw,20px);
+  min-width:0; overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:none;
+}
+#app .post-viewer-screen.home-feed-viewer .home-viewer-switcher-tabs::-webkit-scrollbar { display:none; }
+#app .post-viewer-screen.home-feed-viewer .home-viewer-switcher-tab {
+  display:inline-flex; flex:0 0 auto; align-items:center; justify-content:center; gap:6px;
+  min-height:40px; padding:0; border:0; background:transparent; color:#707782;
+  font:600 14px/1 var(--font); white-space:nowrap; pointer-events:auto!important; touch-action:manipulation;
+}
+#app .post-viewer-screen.home-feed-viewer .home-viewer-switcher-tab.is-active {
+  color:#17191c; font-weight:750;
+}
+#app .post-viewer-screen.post-viewer-media.home-feed-viewer .home-viewer-switcher-tab {
+  color:rgba(255,255,255,.72);
+}
+#app .post-viewer-screen.post-viewer-media.home-feed-viewer .home-viewer-switcher-tab.is-active {
+  color:#fff;
+}
+#app .post-viewer-screen.post-viewer-media .post-actions-menu > summary {
+  color:#fff!important;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.7));
+}
+#app .post-viewer-screen.home-feed-viewer .home-viewer-follow-avatars {
+  display:inline-flex; flex:0 0 auto; align-items:center; justify-content:flex-start;
+}
+#app .post-viewer-screen.home-feed-viewer .home-viewer-follow-avatars img {
+  display:block; flex:0 0 25px; width:25px; height:25px; margin-left:-8px;
+  border:1.5px solid #fff; border-radius:50%; object-fit:cover; background:#d9dce0;
+}
+#app .post-viewer-screen.home-feed-viewer .home-viewer-follow-avatars img:first-child {
+  margin-left:0;
+}
+#app .post-viewer-screen.home-feed-viewer:not(.post-viewer-media) .home-viewer-follow-avatars img {
+  border-color:#fff;
+}
+@media (max-width:380px) {
+  #app .post-viewer-screen.home-feed-viewer .home-viewer-switcher-tabs { gap:9px; }
+  #app .post-viewer-screen.home-feed-viewer .home-viewer-switcher-tab { font-size:13px; }
+  #app .post-viewer-screen.home-feed-viewer .home-viewer-follow-avatars img {
+    flex-basis:22px; width:22px; height:22px; margin-left:-7px;
+  }
+  #app .post-viewer-screen.home-feed-viewer .home-viewer-follow-avatars img:first-child { margin-left:0; }
+}

@@ -1,0 +1,123 @@
+.xe-topic-page {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  padding: 12px 0 10px;
+}
+
+.xe-topic-heading {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 10px;
+}
+
+.xe-topic-heading > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.xe-topic-heading h2 {
+  margin: 0;
+  font-family: inherit;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.xe-topic-heading p {
+  margin: 4px 0 0;
+  color: var(--muted, #71767b);
+  font-size: 12px;
+}
+
+.xe-topic-tabs {
+  display: flex;
+  max-width: 100%;
+  gap: 7px;
+  overflow: auto;
+  padding: 1px 0 3px;
+  scrollbar-width: none;
+}
+
+.xe-topic-tabs .xe-chip {
+  display: inline-flex;
+  min-width: 54px;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 13px;
+  border-color: #e4e5e8;
+  background: #fff;
+  color: #292b30;
+  font: 600 12px/1.2 var(--font, inherit);
+  white-space: nowrap;
+}
+
+.xe-topic-tabs .xe-chip.on {
+  border-color: #17191c !important;
+  background: #17191c !important;
+  color: #fff !important;
+}
+
+.xe-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 6px 12px 8px;
+}
+
+.xe-topic-card {
+  display: flex;
+  min-width: 0;
+  min-height: 68px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid var(--line, #e8e8eb);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text, #17191d);
+  text-align: left;
+  cursor: pointer;
+}
+
+.xe-topic-card-copy {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.xe-topic-card b {
+  font-size: 13px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.xe-topic-card small {
+  color: var(--muted, #747982);
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.xe-topic-card > i {
+  flex: 0 0 auto;
+  color: #969ba2;
+  font-size: 20px;
+  font-style: normal;
+}
+
+.xe-topic-related-section h3 {
+  margin: 0;
+  padding: 2px 12px 0;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+@media (min-width: 700px) {
+  .xe-topic-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,203 @@
+/* Current Oldtime interaction palette and shared compact-control rules. */
+:root {
+  --color-primary:#17191c;
+  --color-primary-pressed:#000;
+  --color-follow:#d7263d;
+  --accent:#17191c;
+  --blue:#17191c;
+  --bp-primary:#17191c;
+  --bp-primary-press:#000;
+  --bp-orange:#17191c;
+  --bp-orange-press:#000;
+  --feed-save:#17191c;
+  --notification-accent:#17191c;
+  --story-ring:linear-gradient(145deg,#e0245e,#8e1b24);
+}
+
+#app :is(
+  .btn:not(.ghost):not(.danger):not(.auth-link), .cta-primary, .profile-editor-save, .profile-editor-header-save,
+  .blast-primary, .blast-compose-create, .cf-primary, .community-note-submit,
+  .comment-send, .settings-save-bar > button, .post-viewer-footer-send,
+  .report-reason-submit, .ap-btn:not(.ghost), .ct-btn:not(.ghost), .rn-save,
+  .pp-sheet button.pp-main, .exp-primary, .chat-composer button[type="submit"],
+  .ot-post-primary, .create-flow-primary, .ce-primary, .community-new-post, .srp-send,
+  .search-header-submit, .search-explore-pin, .ss-primary
+):not(:disabled) {
+  background:#17191c !important;
+  border-color:#17191c !important;
+  color:#fff !important;
+  box-shadow:none !important;
+}
+
+#app :is(
+  .btn:not(.ghost):not(.danger):not(.auth-link), .cta-primary, .profile-editor-save, .profile-editor-header-save,
+  .blast-primary, .blast-compose-create, .cf-primary, .community-note-submit,
+  .comment-send, .settings-save-bar > button, .post-viewer-footer-send,
+  .report-reason-submit, .ap-btn:not(.ghost), .ct-btn:not(.ghost), .rn-save,
+  .pp-sheet button.pp-main, .exp-primary, .chat-composer button[type="submit"],
+  .ot-post-primary, .create-flow-primary, .ce-primary, .community-new-post, .srp-send,
+  .search-header-submit, .search-explore-pin, .ss-primary
+):disabled {
+  background:#f2f4f7 !important;
+  border-color:#e5e7eb !important;
+  color:#6b6f76 !important;
+  box-shadow:none !important;
+}
+
+#app :is(
+  .followpill, .followchip, .followwide, #pfollow, .contact-follow,
+  .people-match-follow, .engagement-follow, .profile-follow-button, .post-viewer-follow,
+  .cf-follow, .pl-follow, .discovery-follow-button, .chat-empty-follow,
+  .xe-topic-follow, [data-follow]
+):not([aria-pressed="true"]):not(.following):not(.is-following) {
+  background:#d7263d !important;
+  border-color:#d7263d !important;
+  color:#fff !important;
+}
+
+#app :is(
+  .followpill, .followchip, .followwide, #pfollow, .contact-follow,
+  .people-match-follow, .engagement-follow, .profile-follow-button, .post-viewer-follow,
+  .cf-follow, .pl-follow, .discovery-follow-button, .chat-empty-follow,
+  .xe-topic-follow, [data-follow]
+):is([aria-pressed="true"], .following, .is-following) {
+  background:#f2f4f7 !important;
+  border-color:#e5e7eb !important;
+  color:#17191c !important;
+}
+
+#app .home-screen :is(.followpill,.followchip)::before,
+#app .post-viewer-media .post-viewer-media-info .meta .followpill::before {
+  display:none !important;
+}
+#app .home-screen :is(.followpill,.followchip)[aria-pressed="true"],
+#app .post-viewer-media .post-viewer-media-info .meta .followpill[aria-pressed="true"] {
+  background:rgba(23,25,28,.78) !important;
+  border:1px solid rgba(255,255,255,.72) !important;
+  color:#fff !important;
+}
+
+#app .phone > nav.nav .nav-create-icon {
+  border-radius:0 !important;
+  background:transparent !important;
+  color:#fff !important;
+  box-shadow:none !important;
+}
+#app .phone > nav.nav .nav-create-icon .navic { width:24px; height:24px; }
+#app .media-feed-phone > nav.nav button.on {
+  color:#fff !important;
+  background:rgba(255,255,255,.1) !important;
+}
+#app .media-feed-phone > nav.nav .nav-create-icon {
+  background:transparent !important;
+  box-shadow:none !important;
+}
+
+#app .blast-screen { --blast-accent:#17191c; --blast-accent-rgb:23,25,28; }
+#app .blast-screen.blast-hub .blast-compose-prompt {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:0;
+  border-color:#e5e7eb;
+  background:#fff;
+  color:#6b6f76 !important;
+  font:400 13px/1.25 var(--font,system-ui,sans-serif);
+}
+#app .blast-compose-prompt > span:last-child { min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+#app .blast-compose-icon { display:grid; flex:none; width:18px; height:18px; place-items:center; color:#17191c; }
+#app .blast-compose-icon .navic { width:17px; height:17px; }
+
+#app .cf-screen { --blue:#17191c; --color-primary:#17191c; }
+#app .cf-error button { color:#17191c; }
+#app .cf-suggestion-error button { color:#17191c; }
+
+#app .search-screen :is(button,a) { color:#17191c; }
+#app .search-screen { --color-primary:#17191c; --accent:#17191c; }
+#app .search-screen :focus-visible { outline-color:#17191c !important; }
+#app .search-screen .discovery-search { caret-color:#17191c !important; }
+#app .search-screen .discovery-search-wrap:focus-within {
+  border-color:rgba(23,25,28,.42) !important;
+  box-shadow:0 0 0 3px rgba(23,25,28,.06) !important;
+}
+#app .search-screen :is(.discovery-trend-momentum.new,.discovery-trend-momentum.rising) {
+  background:#f2f4f7 !important;
+  color:#17191c !important;
+}
+#app .search-screen .discovery-browse-menu button[aria-checked="true"] {
+  background:#f2f4f7 !important;
+  color:#17191c !important;
+}
+#app .search-screen .discovery-topic-scroll .discovery-category.on::after {
+  background:#17191c !important;
+}
+#app .search-screen .search-app-header .community-search-button.on { color:#17191c !important; }
+#app .search-screen .search-app-header .community-new-post:active { background:#000 !important; }
+#app .auth.ot-auth :is(a,.auth-step-back,.auth-recovery-link,.btn.auth-link) { color:#17191c !important; }
+#app .auth.ot-auth .btn.auth-link {
+  background:transparent !important;
+  border-color:transparent !important;
+  color:#17191c !important;
+  box-shadow:none !important;
+}
+#app .auth.ot-auth .signup-interest.selected {
+  border-color:#17191c !important;
+  background:#17191c !important;
+  color:#fff !important;
+}
+#app .auth.ot-auth .signup-follow-oldtime input { accent-color:#17191c; }
+#app .auth.ot-auth .field:focus { border-color:#17191c !important; }
+#app .auth.ot-auth :is(.signup-interest:focus-visible,.signup-follow-oldtime input:focus-visible) {
+  outline-color:#17191c !important;
+}
+#app .auth.ot-auth .signup-interest-count.is-ready { color:#17191c !important; }
+#app .search-screen .community-fallback-panel button { color:#17191c !important; }
+#app .oldtime-legal-document a,
+#app .oldtime-legal-shell a,
+#app .oldtime-legal-page a,
+#app .oldtime-legal-links a,
+#app .oldtime-support-entry a { color:#17191c !important; }
+#app :is(.oldtime-legal-document,.oldtime-legal-shell,.oldtime-legal-page,.oldtime-legal-review,.oldtime-legal-links,.oldtime-support-entry,.oldtime-support-answer) :focus-visible,
+#app .oldtime-support-intro input:focus {
+  outline-color:#17191c !important;
+  border-color:#17191c !important;
+}
+
+#app .ap-wrap { font-family:var(--font,system-ui,sans-serif); }
+#app .ap-head h1 { font:650 16px/1.25 var(--font,system-ui,sans-serif); }
+#app .ap-wrap .ap-btn[data-ap-next] { margin:8px 0 0; }
+#app .ap-opt { border-top-color:transparent; }
+
+#app .clip-place-card {
+  grid-template-columns:20px minmax(0,1fr);
+  gap:5px;
+  min-height:27px;
+  padding:3px 8px 3px 3px;
+  border-radius:7px;
+}
+#app .clip-place-icon {
+  width:20px;
+  height:20px;
+  border:0;
+  border-radius:5px;
+  background:#10b994;
+}
+#app .clip-place-icon svg { width:16px; height:16px; }
+#app .clip-place-copy { display:flex; align-items:center; gap:5px; min-width:0; }
+#app .clip-place-copy b { min-width:0; font-size:12px; line-height:1.1; }
+#app .clip-place-copy small { flex:none; font-size:10px; line-height:1.1; }
+#app .clip .clip-place-card.place-video-overlay {
+  min-height:27px;
+  gap:5px;
+  padding:3px 8px 3px 3px;
+  border-radius:7px;
+}
+#app .clip .clip-place-card.place-video-overlay .place-overlay-icon {
+  width:20px;
+  height:20px;
+  flex:0 0 20px;
+  border-radius:5px;
+}
+#app .clip .clip-place-card.place-video-overlay .place-overlay-icon svg { width:16px; height:16px; }
+#app .clip .clip-place-card.place-video-overlay .place-overlay-name { font-size:12px; line-height:1.1; }
+#app .clip .clip-place-card.place-video-overlay .place-overlay-copy small { font-size:10px; }

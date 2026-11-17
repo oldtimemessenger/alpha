@@ -1,0 +1,224 @@
+#app .profile-topbar-actions {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-left: auto;
+}
+
+#app .profile-screen .profile-reference-header .profile-topbar-actions > .profile-notification-button,
+#app .profile-screen .profile-reference-header .profile-topbar-actions > .profile-more {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 50%;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, .45);
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+#app .profile-screen .profile-reference-header .profile-topbar-actions > .profile-notification-button .navic {
+  width: 22px;
+  height: 22px;
+  color: #fff !important;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .55));
+}
+
+#app .profile-screen .profile-reference-header .profile-topbar-actions > .profile-notification-button.is-enabled .navic {
+  fill: currentColor;
+}
+
+#app .profile-screen .profile-reference-header .profile-topbar-actions > .profile-more .profile-more-icon {
+  width: 22px;
+  height: 22px;
+  color: #fff !important;
+  fill: #fff;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .55));
+}
+
+#app .profile-screen .profile-reference-header .profile-topbar-actions > :is(.profile-notification-button, .profile-more)::before,
+#app .profile-screen .profile-reference-header .profile-topbar-actions > :is(.profile-notification-button, .profile-more)::after {
+  display: none !important;
+  content: none !important;
+}
+
+#app .profile-screen .profile-reference-header .profile-topbar-actions > :is(.profile-notification-button, .profile-more):focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+#app .profile-action-dropdown {
+  position: fixed;
+  inset: 0;
+  z-index: 1201;
+  display: none;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: calc(env(safe-area-inset-top, 0px) + 62px) 14px 16px;
+  background: transparent;
+}
+
+#app .profile-action-dropdown.on {
+  display: flex;
+}
+
+#app .profile-action-dropdown-panel {
+  width: min(330px, calc(100vw - 28px));
+  max-height: min(420px, calc(100dvh - env(safe-area-inset-top, 0px) - 78px));
+  overflow: auto;
+  padding: 6px 9px;
+  border: 1px solid rgba(20, 22, 27, .08);
+  border-radius: 22px;
+  background: #f6f6f8;
+  color: #17191d;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, .22);
+}
+
+#app .profile-action-dropdown-item {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 72px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 15px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+#app .profile-action-dropdown-item .navic {
+  width: 26px;
+  height: 26px;
+}
+
+#app .profile-action-dropdown-item:disabled {
+  opacity: .55;
+  cursor: wait;
+}
+
+#app .profile-action-dropdown-item.is-report {
+  color: #d72b37;
+}
+
+#app .profile-action-dropdown-item .profile-action-selected {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+}
+
+#app .profile-action-dropdown-item .profile-action-selected .navic {
+  width: 20px;
+  height: 20px;
+}
+
+#app .profile-action-dropdown-item:focus-visible {
+  outline: 2px solid #17191d;
+  outline-offset: -2px;
+}
+
+#app .profile-notification-sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 1202;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: rgba(0, 0, 0, .48);
+}
+
+#app .profile-notification-sheet.on {
+  display: flex;
+}
+
+#app .profile-notification-panel {
+  width: min(100%, 560px);
+  box-sizing: border-box;
+  padding: 0 22px calc(24px + env(safe-area-inset-bottom, 0px));
+  border-radius: 24px 24px 0 0;
+  background: #fff;
+  color: #17191d;
+  text-align: center;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, .12);
+}
+
+#app .profile-notification-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  border-bottom: 1px solid #ececef;
+  position: relative;
+  font-size: 15px;
+}
+
+#app .profile-notification-heading > button {
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #17191d;
+}
+
+#app .profile-notification-heading .navic {
+  width: 19px;
+  height: 19px;
+}
+
+#app .profile-notification-avatar {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 30px auto 16px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eceef1;
+}
+
+#app .profile-notification-panel > p {
+  max-width: 320px;
+  margin: 0 auto 24px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+#app .profile-notification-follow {
+  width: min(100%, 320px);
+  min-height: 46px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent-pink, #ff1744);
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+#app .profile-notification-follow:disabled {
+  opacity: .65;
+}

@@ -1,0 +1,122 @@
+/* Keep selected navigation and tabs neutral; reserve blue for primary actions. */
+#app .profile-screen .profile-section-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  justify-content: center;
+  overflow-x: visible;
+  border-bottom: 0;
+}
+
+#app .profile-screen .profile-section-tab {
+  min-width: 0;
+  padding-inline: 4px;
+}
+
+#app .profile-screen .profile-section-tab.on {
+  border-bottom-color: #17191d;
+  color: #17191d;
+}
+
+#app .profile-screen .profile-section-tab.on::after {
+  display: none;
+  content: none;
+}
+
+#app .home-view-tab.on::after,
+#app .home-topic-tab.on::after,
+#app .community-feed-tabs button.on::after,
+#app .community-topic-tabs button.on::after,
+#app .search-screen .discovery-tabs button.on::after {
+  background: #17191d;
+}
+
+#app .home-view-tab.on::after {
+  display: none;
+  content: none;
+}
+
+#app .community-feed-tabs button.on,
+#app .community-topic-tabs button.on,
+#app .search-screen .search-app-header .community-search-button.on,
+#app .search-screen .discovery-tabs button.on,
+#app .search-screen .discovery-topic-scroll .discovery-category.on,
+#app .notification-filters button[aria-pressed="true"],
+#app .notification-filters button.on {
+  color: #17191d;
+}
+
+#app .community-feed-tabs button.on::after,
+#app .notification-filters button[aria-pressed="true"],
+#app .notification-filters button.on {
+  border-bottom-color: #17191d;
+}
+
+#app .search-screen .xe-chips .xe-chip.on {
+  border-color: #17191d;
+  background: #17191d;
+  color: #fff;
+}
+
+#app .creator-center .ct-tabs button.on,
+#app .ct-wrap .ct-tabs button.on,
+#app .ap-wrap .ap-tabs button.on,
+#app .ap-wrap .ap-post-tabs button.on,
+#app .ps-tabs .ps-tab[aria-selected="true"] {
+  color: #17191d;
+  box-shadow: inset 0 -2px 0 #17191d;
+}
+
+#app .ap-wrap .ap-tabs button.on,
+#app .ap-wrap .ap-seg button.on,
+#app .ct-wrap .ct-tabs button.on,
+#app .account-settings-screen .settings-content .seg button.on,
+#app .settings-content .seg button.on {
+  border-color: #17191d;
+  background: #17191d;
+  color: #fff;
+}
+
+#app .edit-profile-screen .profile-avatar-choice[aria-pressed="true"],
+#app .edit-profile-screen .profile-editor-auto-cover[aria-pressed="true"] {
+  border-color: #17191d;
+  background: #f1f2f4;
+  color: #17191d;
+}
+
+#app .creative-editor .ce-tool[aria-pressed="true"],
+#app .creative-editor .ce-chip[aria-pressed="true"] {
+  border-color: rgba(255, 255, 255, .7);
+  background: rgba(255, 255, 255, .16);
+  color: #fff;
+}
+
+#app .creative-editor .ce-layer-list button[aria-selected="true"],
+#app .creative-editor .ce-layer-list button.on,
+#app .creative-editor .ce-preset[aria-pressed="true"],
+#app .creative-editor .ce-preset.on {
+  border-color: #fff;
+  color: #fff;
+  box-shadow: 0 0 0 1px #fff;
+}
+
+#app .creative-editor .ce-dock .ce-tool[aria-pressed="true"],
+#app .creative-editor .ce-dock .ce-tool[aria-expanded="true"],
+#app .creative-editor .ce-dock .ce-tool.on {
+  background: rgba(255, 255, 255, .16);
+  box-shadow: inset 0 -2px 0 #fff;
+}
+
+#app .creative-editor .ce-inline-text {
+  outline-color: #fff;
+  caret-color: #fff;
+}
+
+#app .nav.lightnav button.on {
+  color: #17191d;
+  background: transparent;
+}
+
+#app .nav:not(.lightnav) button.on {
+  color: #fff;
+  background: transparent;
+}

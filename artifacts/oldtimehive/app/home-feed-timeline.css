@@ -1,0 +1,140 @@
+#app .home-screen[data-rectangle-feed="true"] #feed {
+  padding: 0 0 12px;
+  scroll-snap-type: none;
+  background: #fff;
+  color: #17191d;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .home-feed-post-card {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  min-width: 0;
+  padding: 13px 14px 14px;
+  border-bottom: 1px solid #e8ebf2;
+  background: #fff;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-timeline-avatar {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #f0f1f4;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-timeline-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-content {
+  min-width: 0;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-detail {
+  display:flex;
+  align-items:flex-start;
+  gap:4px;
+  min-width: 0;
+  padding: 0;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-byline {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  min-width: 0;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-author {
+  min-width: 0;
+  overflow: hidden;
+  color: #17191d;
+  font-size: 12px;
+  font-weight: 740;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-handle,
+#app .home-screen[data-rectangle-feed="true"] .profile-post-byline time {
+  flex: 0 1 auto;
+  overflow: hidden;
+  color: #707783;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-byline time {
+  margin-left: auto;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-caption {
+  margin: 6px 0 9px;
+  color: #17191d;
+  font-size: 13px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-media {
+  display: block;
+  width: 100%;
+  max-height: 390px;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid #e8ebf2;
+  border-radius: 13px;
+  background: #f5f7fc;
+  color: #17191d;
+  line-height: 0;
+  text-align: left;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-media.is-video-preview {
+  aspect-ratio: 16 / 10;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-media > img,
+#app .home-screen[data-rectangle-feed="true"] .profile-post-media > video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-media.is-text {
+  min-height: 0;
+  max-height: none;
+  aspect-ratio: auto;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  line-height: 1.45;
+}
+
+#app .home-screen[data-rectangle-feed="true"] .profile-post-text-preview {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 2px 0 4px;
+  border-radius: 0;
+  background: transparent;
+  color: #17191d;
+  font-size: 13px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+#app .profile-infinite-sentinel {
+  min-height: 24px;
+  width: 100%;
+}

@@ -1,0 +1,377 @@
+/*
+ * Oldtime's compact reference layout: clear page bands, confident spacing,
+ * and a consistent content rhythm. Visual changes are geometry-only and use
+ * the app's existing color and type tokens.
+ */
+
+#app .screen.on {
+  min-width: 0;
+  min-height: 0;
+}
+
+#app .screen :is(.scroll, .stories-feed-scroll) {
+  overscroll-behavior-y: contain;
+  scroll-padding-top: calc(58px + env(safe-area-inset-top, 0px));
+}
+
+/* Home: retain the full-bleed vertical feed, with the current controls grouped
+   into a compact floating top row. */
+#app .media-feed-phone,
+#app .media-feed-phone .screen,
+#app .media-feed-phone #feed,
+#app .media-feed-phone .clip {
+  width: 100%;
+}
+#app .media-feed-phone #feed {
+  scroll-snap-type: y mandatory;
+  overscroll-behavior-y: contain;
+}
+#app .home-screen .home-discovery-header {
+  padding: max(12px, env(safe-area-inset-top, 0px)) 12px 0;
+}
+#app .home-screen .home-primary-row {
+  min-height: 46px;
+  padding-inline: 46px;
+}
+#app .home-screen .home-view-tabs {
+  gap: clamp(14px, 4vw, 22px);
+}
+#app .home-screen .home-view-tab {
+  min-height: 42px;
+  padding: 9px 1px 12px;
+  font-size: 14px;
+}
+#app .home-screen .home-header-actions {
+  right: 0;
+  gap: 5px;
+}
+#app .home-screen .home-header-actions .icon,
+#app .home-screen .app-search-shortcut {
+  width: 38px;
+  min-width: 38px;
+  height: 40px;
+}
+#app .home-screen .home-header-actions .navic,
+#app .home-screen .app-search-shortcut .navic {
+  width: 20px;
+  height: 20px;
+}
+#app .home-screen .app-search-shortcut .navic {
+  width: 24px;
+  height: 24px;
+}
+#app .home-screen:not(:has(.clip)) .home-discovery-header {
+  padding-bottom: 4px;
+}
+
+/* Keep navigation centered in the original phone-width column. */
+#app .phone:not(.media-feed-phone) > nav.nav {
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+}
+
+/* Community: pin the identity and feed selector as separate hierarchy bands;
+   give each text post a more deliberate author / copy / media rhythm. */
+#app .community-screen > .stories-feed-scroll {
+  width: 100%;
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+}
+#app .community-screen .community-header {
+  position: sticky;
+  top: 0;
+  z-index: 14;
+  height: calc(64px + env(safe-area-inset-top, 0px));
+  min-height: calc(64px + env(safe-area-inset-top, 0px));
+  padding-inline: 16px;
+}
+#app .community-screen .community-feed-tabs,
+#app .community-screen .community-fallback-header {
+  position: sticky;
+  top: calc(64px + env(safe-area-inset-top, 0px));
+  z-index: 13;
+}
+#app .community-screen .community-feed-tabs {
+  height: 50px;
+}
+#app .community-screen .community-feed-tabs button {
+  min-height: 50px;
+}
+#app .community-screen .community-feed-section,
+#app .community-screen .community-content-grid {
+  width: 100%;
+  min-width: 0;
+}
+#app .community-screen .community-content-grid > .community-post-card {
+  min-width: 0;
+  padding: 18px 16px 12px;
+}
+#app .community-screen .community-post-author-row {
+  gap: 12px;
+}
+#app .community-screen .community-post-avatar {
+  width: 44px;
+  height: 44px;
+  flex-basis: 44px;
+}
+#app .community-screen .community-post-copy {
+  margin-top: 10px;
+  line-height: 1.52;
+}
+#app .community-screen .community-post-media,
+#app .community-screen .community-attachment-grid,
+#app .community-screen .community-post-place {
+  margin-top: 12px;
+}
+#app .community-screen .community-post-media[data-count="1"] .community-post-media-item {
+  aspect-ratio: 16 / 10;
+  max-height: 300px;
+}
+#app .community-screen .community-post-actions {
+  margin-top: 8px;
+  min-height: 46px;
+}
+#app .community-screen .community-feed-status,
+#app .community-screen .community-feed-loading,
+#app .community-screen .community-feed-more {
+  width: calc(100% - 24px);
+  margin-inline: auto;
+}
+
+/* Search: title/search bar, hub tabs, topic chips and results form a compact,
+   sticky stack instead of competing for the same vertical space. */
+#app .search-screen .page {
+  min-height: 100%;
+  padding-bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+}
+#app .search-screen .search-app-header {
+  position: sticky;
+  top: 0;
+  z-index: 14;
+  min-height: calc(58px + env(safe-area-inset-top, 0px));
+}
+#app .search-screen .search-header-field {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+#app .search-screen .search-header-control {
+  min-height: 42px;
+}
+#app .search-screen .discovery-home-topic-tabs {
+  position: sticky;
+  top: calc(58px + env(safe-area-inset-top, 0px));
+  z-index: 13;
+}
+#app .search-screen .discovery-home-topic-tabs {
+  gap: 8px;
+  padding: 7px 10px;
+}
+#app .search-screen .discovery-topic-scroll {
+  gap: 7px;
+}
+#app .search-screen .discovery-topic-scroll .discovery-category {
+  min-height: 38px;
+  padding-inline: 13px;
+}
+#app .search-screen .discovery-filter-button {
+  flex-basis: 40px;
+  width: 40px;
+  height: 40px;
+}
+#app .search-screen .discovery-video-rail {
+  padding-block: 12px 10px;
+}
+#app .search-screen .discovery-video-track {
+  gap: 10px;
+  padding-inline: 12px;
+}
+#app .search-screen .discovery-section-heading {
+  align-items: end;
+  padding: 18px 14px 10px;
+}
+#app .search-screen .discovery-trend-row {
+  min-height: 68px;
+  grid-template-columns: 28px minmax(0, 1fr) auto 12px;
+  padding-inline: 14px;
+}
+#app .search-screen .discovery-person {
+  min-width: 0;
+  min-height: 68px;
+  padding-inline: 14px;
+}
+#app .search-screen .explore-feed-grid,
+#app .search-screen .explore-feed-skeleton {
+  gap: 3px;
+}
+
+/* Inbox: preserve the existing Stories/Notes console and controls, then make
+   the messages themselves read as a single aligned list. */
+#app .chat-list-screen .chat-list-heading {
+  position: sticky;
+  top: 0;
+  z-index: 15;
+  padding: calc(10px + env(safe-area-inset-top, 0px)) 16px 13px;
+}
+#app .chat-list-screen .chat-list-topline {
+  min-height: 42px;
+  align-items: center;
+}
+#app .chat-list-screen .chat-title {
+  font-size: 24px;
+  letter-spacing: -.035em;
+}
+#app .chat-list-screen .chat-head-actions {
+  gap: 6px;
+}
+#app .chat-list-screen .chat-list-body {
+  width: 100%;
+  min-width: 0;
+  padding: 0 0 calc(18px + env(safe-area-inset-bottom, 0px));
+}
+#app .chat-list-screen .cic {
+  margin: 0;
+  padding-block: 10px 12px;
+}
+#app .phone .chat-list-screen .chat-inbox-row {
+  min-height: 76px;
+  margin: 0 !important;
+  padding: 10px 16px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--line) !important;
+  border-radius: 0 !important;
+  background: var(--bg) !important;
+  box-shadow: none !important;
+}
+#app .chat-list-screen .chat-inbox-avatar {
+  width: 50px;
+  height: 50px;
+  flex-basis: 50px;
+}
+#app .chat-list-screen .chat-inbox-main {
+  min-height: 50px;
+}
+#app .chat-list-screen #crows {
+  min-width: 0;
+}
+
+/* Private thread: fixed identity bar, wide readable message lane, and a
+   stable composer zone. Existing one-to-one controls and location cards stay. */
+#app .conversation-screen {
+  min-height: 0;
+}
+#app .conversation-screen .chat-header {
+  position: sticky;
+  top: 0;
+  z-index: 12;
+  flex: 0 0 auto;
+  min-height: 66px;
+  padding-inline: 12px;
+}
+#app .conversation-screen .conversation-messages {
+  min-height: 0;
+  flex: 1 1 auto;
+  padding: 16px 14px 18px;
+}
+#app .conversation-screen .message-row {
+  max-width: min(84%, 440px);
+  margin-block: 6px;
+}
+#app .conversation-screen .composer {
+  flex: 0 0 auto;
+  margin: 8px 12px max(10px, env(safe-area-inset-bottom, 0px));
+}
+
+/* Profile: retain cover, identity, counts and actions; make the gallery a
+   familiar three-column media index with tighter edges and a stable tab row. */
+#app .profile-screen .profile-page {
+  min-height: 100%;
+}
+#app .profile-screen .profile-simple-hero .profile-intro,
+#app .profile-screen .profile-body {
+  width: 100%;
+}
+#app .profile-screen .profile-body {
+  min-width: 0;
+  padding-inline: 12px;
+}
+#app .profile-screen .profile-section-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin-inline: -12px;
+}
+#app .profile-screen .profile-post-grid {
+  min-width: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+  margin-inline: -12px;
+  padding: 2px 0 18px;
+}
+#app .profile-screen .profile-post-card {
+  min-width: 0;
+}
+#app .profile-screen .profile-post-media {
+  aspect-ratio: 1;
+  border-radius: 0;
+}
+#app .profile-screen .profile-post-media.is-video-preview {
+  aspect-ratio: 1;
+}
+#app .profile-screen .profile-post-detail {
+  min-width: 0;
+  padding: 5px 5px 8px;
+}
+#app .profile-screen .profile-post-author > span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#app .profile-screen .profile-stats .profile-count-text b {
+  font-size: clamp(20px, 5.4vw, 26px);
+}
+
+/* Create remains camera-first. Give the live view a deliberate capture frame
+   while keeping all current camera controls and the bottom dock in place. */
+#app .camera-screen {
+  min-height: 100dvh;
+}
+#app .camera-screen .camera-feed {
+  inset: calc(58px + env(safe-area-inset-top, 0px)) 12px calc(170px + env(safe-area-inset-bottom, 0px));
+  border-radius: 20px;
+}
+#app .camera-screen .camera-feed video,
+#app .camera-screen .camera-feed .camera-vignette {
+  border-radius: inherit;
+}
+#app .camera-screen .camera-top-controls {
+  left: 12px;
+  right: 12px;
+}
+#app .camera-screen .camera-bottom-controls {
+  padding-inline: 16px;
+}
+#app .cs-studio.creative-editor {
+  min-height: 100dvh;
+}
+#app .cs-studio .cs-capture-row {
+  max-width: 360px;
+}
+
+@media (max-width: 360px) {
+  #app .home-screen .home-primary-row {
+    padding-inline: 40px;
+  }
+  #app .home-screen .home-view-tabs {
+    gap: 12px;
+  }
+  #app .phone .chat-list-screen .chat-inbox-row {
+    padding-inline: 12px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #app .screen :is(.scroll, .stories-feed-scroll, #feed, .conversation-messages) {
+    scroll-behavior: auto;
+  }
+}
