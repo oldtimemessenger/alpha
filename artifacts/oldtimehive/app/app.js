@@ -152,6 +152,7 @@ import "./app-wide-interaction-rules.css";
 import "./modern-experience.css";
 import { unreadNotificationCount, notificationBadgeMarkup } from "./notification-badge.js";
 import "./focus-policy.css";
+import "./rednote-unified-experience.css";
 
 const $ = (s, r = document) => r.querySelector(s);
 const app = $("#app");
