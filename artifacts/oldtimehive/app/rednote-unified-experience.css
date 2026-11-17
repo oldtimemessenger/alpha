@@ -1,0 +1,136 @@
+/*
+ * Old Time — unified RedNote-inspired visual layer.
+ * Presentation only: no DOM, routes, state, API, storage, or navigation changes.
+ * Keep the existing primary navigation untouched.
+ */
+:root {
+  --ot-canvas: #fbfaf8;
+  --ot-surface: #ffffff;
+  --ot-surface-soft: #f5f4f1;
+  --ot-ink: #202124;
+  --ot-muted: #777b83;
+  --ot-line: #ece9e5;
+  --ot-accent: #c73542;
+  --ot-accent-soft: #fff0ef;
+  --ot-blue: #3159b8;
+  --ot-radius-card: 17px;
+  --ot-radius-control: 12px;
+  --ot-shadow-card: 0 3px 14px rgba(34, 29, 24, .055);
+  --color-primary: var(--ot-accent);
+  --color-primary-pressed: #a92c37;
+  --color-burgundy: #a92c37;
+  --color-surface: var(--ot-surface);
+  --color-surface-secondary: var(--ot-surface-soft);
+  --color-ink: var(--ot-ink);
+  --color-muted: var(--ot-muted);
+  --color-border: var(--ot-line);
+  --bg: var(--ot-canvas);
+  --panel: var(--ot-surface-soft);
+  --card: var(--ot-surface);
+  --line: var(--ot-line);
+  --text: var(--ot-ink);
+  --muted: var(--ot-muted);
+  --accent: var(--ot-accent);
+  --accent-pink: #e75a63;
+  --brand-red: var(--ot-accent);
+  --accent-gold: #c73542;
+  --shadow: 0 16px 44px rgba(34, 29, 24, .10);
+}
+#app, #app .phone { background: var(--ot-canvas); color: var(--ot-ink); }
+#app .screen:not(.camera-screen) { background: var(--ot-canvas); color: var(--ot-ink); }
+#app .screen :is(h1,h2,h3,h4,strong,b) { letter-spacing: -.018em; }
+#app .screen :is(p,small,.muted,.subtle) { color: var(--ot-muted); }
+#app .screen :is(.topbar,.community-header,.chat-header,.search-app-header,.profile-topbar,.settings-header) {
+  background: rgba(255,255,255,.96);
+  border-color: var(--ot-line);
+  box-shadow: none;
+  backdrop-filter: saturate(150%) blur(14px);
+}
+#app .screen :is(.topbar h1,.community-header h1,.chat-header h1,.search-app-header h1) {
+  color: var(--ot-ink);
+  font-weight: 750;
+  letter-spacing: -.035em;
+}
+#app .screen :is(input,textarea,select,.search-header-field,.discovery-search,.xe-bar) {
+  border: 1px solid #eeece8;
+  border-radius: 999px;
+  background: #f4f3f0;
+  color: var(--ot-ink);
+  box-shadow: none;
+}
+#app .screen :is(input,textarea,select):focus {
+  border-color: rgba(199,53,66,.45);
+  outline: 3px solid rgba(199,53,66,.09);
+}
+#app .screen :is(button,.btn,.followpill,.followchip,.community-new-post) {
+  transition: background-color .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease;
+}
+#app .screen :is(.btn-primary,.primary-button,.followpill.on,.followchip.on) {
+  background: var(--ot-accent);
+  border-color: var(--ot-accent);
+  color: #fff;
+}
+#app .screen :is(.card,.panel,.surface-card,.community-post-card,.profile-post-card,.discovery-person,.chat-row,.notification-row,.setting-row,.saved-post-card) {
+  border-color: var(--ot-line);
+  border-radius: var(--ot-radius-card);
+  box-shadow: var(--ot-shadow-card);
+}
+#app .screen :is(.community-post-card,.profile-post-card,.saved-post-card) { overflow: hidden; background: var(--ot-surface); }
+#app .screen :is(.community-post-card img,.community-post-card video,.profile-post-media,.post-media,.feed-media) { border-radius: 13px; }
+#app .screen :is(.community-post-card .community-post-copy,.post-caption,.feed-caption) {
+  color: var(--ot-ink);
+  font-size: 14px;
+  line-height: 1.48;
+}
+#app .screen :is(.feed-author-name,.community-post-author,.profile-name,.chat-name) { color: var(--ot-ink); font-weight: 700; }
+#app .screen :is(.feed-meta,.post-meta,.community-post-meta,.profile-handle,.chat-preview) { color: var(--ot-muted); }
+#app .screen :is(.like-button,.post-like,.like-count,.engagement-like) { color: var(--ot-accent); }
+#app .screen :is(.discovery-tabs,.community-feed-tabs,.community-topic-tabs,.profile-tabs,.notification-filters) {
+  border-color: var(--ot-line);
+  background: transparent;
+}
+#app .screen :is(.discovery-tabs button,.community-feed-tabs button,.community-topic-tabs button,.profile-tabs button,.notification-filters button) {
+  border-radius: 999px;
+  color: var(--ot-muted);
+}
+#app .screen :is(.discovery-tabs button.on,.community-feed-tabs button.on,.community-topic-tabs button.on,.profile-tabs button.on,.notification-filters button[aria-pressed="true"]) {
+  color: var(--ot-accent);
+  background: var(--ot-accent-soft);
+}
+#app .search-screen .xe-grid { gap: 11px; padding-inline: 12px; }
+#app .search-screen .xe-grid > * { min-width: 0; }
+#app .search-screen :is(.discovery-card,.xe-card,.search-result-card) {
+  overflow: hidden; border-radius: 15px; background: #fff; box-shadow: var(--ot-shadow-card);
+}
+#app .search-screen :is(.discovery-card img,.xe-card img,.search-result-card img) { border-radius: 13px; }
+#app .home-screen :is(.feed-card,.home-post-card,.post-card) {
+  border-radius: var(--ot-radius-card); background: var(--ot-surface); box-shadow: var(--ot-shadow-card);
+}
+#app .home-screen .handle { color: var(--ot-ink); }
+#app .home-screen :is(.feed-author-name,.handle .name) { font-weight: 700; }
+#app .profile-screen .profile-post-grid { gap: 8px; background: transparent; }
+#app .profile-screen .profile-post-card { border-radius: 13px; box-shadow: none; }
+#app .profile-screen .profile-post-media { border-radius: 13px; }
+#app .screen :is(.chat-inbox-row,.chat-list-item,.notification-item,.activity-row,.setting-item) {
+  background: var(--ot-surface); border-color: var(--ot-line); border-radius: 14px;
+}
+#app .screen :is(.modal,.sheet,.bottom-sheet,.dialog,.popover,.menu-panel) {
+  border-color: var(--ot-line); border-radius: 22px 22px 0 0; box-shadow: 0 -12px 44px rgba(30,25,20,.12);
+}
+#app .screen :is(.chip,.tag,.topic-chip,.interest-chip,.filter-chip) {
+  border: 1px solid var(--ot-line); border-radius: 999px; background: #fff; color: var(--ot-ink);
+}
+#app .screen :is(.chip.active,.tag.active,.topic-chip.active,.interest-chip.active,.filter-chip.active) {
+  border-color: rgba(199,53,66,.2); background: var(--ot-accent-soft); color: var(--ot-accent);
+}
+#app .screen :is(.empty-state,.empty,.placeholder-panel) { border-radius: 18px; background: var(--ot-surface); }
+#app .screen :is(.divider,hr,.separator) { border-color: var(--ot-line); }
+#app .screen :focus-visible { outline-color: rgba(199,53,66,.65); }
+@media (max-width: 600px) {
+  #app .screen:not(.camera-screen) { background: var(--ot-canvas); }
+  #app .screen :is(.topbar,.community-header,.chat-header,.search-app-header) { padding-inline: 15px; }
+  #app .screen :is(.community-post-card,.card,.panel,.surface-card) { border-radius: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #app .screen * { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
