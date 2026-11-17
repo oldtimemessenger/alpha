@@ -1,4 +1,5 @@
 import "./creator-center.css";
+import "./rednote-creator-center.css";
 import { tipIllustration } from "./tip-illustrations.js";
 import { api, requestCloudApi } from "./store.js";
 import { icon } from "./icons.js";
