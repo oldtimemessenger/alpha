@@ -70,7 +70,7 @@
 
 /* Home: RedNote's two-column editorial discovery wall.
    Only the existing Following / Explore rectangular feed surfaces are affected. */
-#app .home-screen[data-rectangle-feed="true"] #feed {
+#app .home-screen #feed[data-rectangle-feed="true"] {
   display:block;
   height:100%;
   min-height:0;
@@ -83,8 +83,8 @@
   overscroll-behavior-y:contain;
   -webkit-overflow-scrolling:touch;
 }
-#app .home-screen[data-rectangle-feed="true"] #feed > .home-feed-post-card,
-#app .home-screen[data-rectangle-feed="true"] #feed > .profile-post-card {
+#app .home-screen #feed[data-rectangle-feed="true"] > .home-feed-post-card,
+#app .home-screen #feed[data-rectangle-feed="true"] > .profile-post-card {
   display:inline-block;
   width:100%;
   min-width:0;
@@ -98,15 +98,15 @@
   background:#fff;
   box-shadow:0 2px 12px rgba(28,39,62,.045);
 }
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-timeline-avatar { display:none !important; }
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-content {
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-timeline-avatar { display:none !important; }
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-content {
   display:flex;
   min-width:0;
   flex-direction:column;
   gap:0;
   padding:0;
 }
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media {
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-media {
   display:block;
   order:0;
   width:100%;
@@ -121,10 +121,10 @@
   aspect-ratio:auto;
   background:#eef0f4;
 }
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media > img,
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media > video,
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media > .ot-profile-cover-template,
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media > .profile-video-preview-fallback {
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-media > img,
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-media > video,
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-media > .ot-profile-cover-template,
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-media > .profile-video-preview-fallback {
   display:block;
   width:100% !important;
   height:auto !important;
@@ -132,26 +132,26 @@
   max-height:none;
   object-fit:cover;
 }
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media.is-text {
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-media.is-text {
   display:grid;
   min-height:118px;
   aspect-ratio:4/3;
   place-items:center;
   padding:14px;
 }
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-detail {
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-detail {
   order:2;
   min-width:0;
   padding:8px 9px 9px;
 }
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-byline {
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-byline {
   display:flex;
   min-width:0;
   align-items:center;
   gap:5px;
   line-height:1.25;
 }
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-author {
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-author {
   overflow:hidden;
   color:#343944;
   font-size:11px;
@@ -159,9 +159,9 @@
   text-overflow:ellipsis;
   white-space:nowrap;
 }
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-handle,
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-byline time { display:none; }
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-caption {
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-handle,
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-byline time { display:none; }
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-caption {
   order:1;
   display:-webkit-box;
   margin:0;
@@ -175,13 +175,13 @@
   -webkit-box-orient:vertical;
   -webkit-line-clamp:2;
 }
-#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media.is-video-preview::after {
+#app .home-screen #feed[data-rectangle-feed="true"] .profile-post-media.is-video-preview::after {
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
 }
-#app .home-screen[data-rectangle-feed="true"] #feed > :not(.home-feed-post-card):not(.profile-post-card) {
+#app .home-screen #feed[data-rectangle-feed="true"] > :not(.home-feed-post-card):not(.profile-post-card) {
   column-span:all;
 }
 #app .home-screen .home-discovery-header {
@@ -341,14 +341,14 @@
 
 /* Keep immersive media experiences immersive; only soften their surrounding chrome. */
 @media (max-width:600px) {
-  #app .home-screen[data-rectangle-feed="true"] #feed { padding-inline:9px; column-gap:9px; }
-  #app .home-screen[data-rectangle-feed="true"] #feed > .home-feed-post-card,
-  #app .home-screen[data-rectangle-feed="true"] #feed > .profile-post-card { margin-bottom:9px; border-radius:13px; }
+  #app .home-screen #feed[data-rectangle-feed="true"] { padding-inline:9px; column-gap:9px; }
+  #app .home-screen #feed[data-rectangle-feed="true"] > .home-feed-post-card,
+  #app .home-screen #feed[data-rectangle-feed="true"] > .profile-post-card { margin-bottom:9px; border-radius:13px; }
   #app .search-screen .xe-grid { column-gap:9px; }
   #app .community-screen .community-post-card { margin:8px 9px; }
 }
 @media (min-width:700px) {
-  #app .home-screen[data-rectangle-feed="true"] #feed,
+  #app .home-screen #feed[data-rectangle-feed="true"],
   #app .search-screen .xe-grid { column-count:3; max-width:980px; margin-inline:auto; }
 }
 @media (prefers-reduced-motion:reduce) {
