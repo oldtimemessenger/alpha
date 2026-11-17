@@ -1,0 +1,120 @@
+/*
+ * Old Time — RedNote-inspired Creator Center presentation.
+ * Keep creator tools, analytics, account policy, purchase flows and actions unchanged.
+ */
+:root {
+  --ot-rn-blue:#2858c7;
+  --ot-rn-blue-soft:#edf3ff;
+  --ot-rn-ink:#20232a;
+  --ot-rn-muted:#7d8490;
+  --ot-rn-line:#eceef2;
+  --ot-rn-canvas:#f7f8fa;
+}
+#app .ct-wrap {
+  background:var(--ot-rn-canvas);
+  color:var(--ot-rn-ink);
+}
+#app .ct-head {
+  min-height:46px;
+  align-items:center;
+  margin-bottom:12px;
+}
+#app .ct-head h1 {
+  color:var(--ot-rn-ink);
+  font-size:19px;
+  font-weight:800;
+  letter-spacing:-.035em;
+}
+#app .ct-icon {
+  width:38px;
+  height:38px;
+  border:1px solid var(--ot-rn-line);
+  border-radius:50%;
+  background:#fff;
+  color:var(--ot-rn-ink);
+}
+#app .ct-tabs {
+  gap:6px;
+  padding:3px 14px 9px;
+  border-bottom:1px solid var(--ot-rn-line);
+}
+#app .ct-tabs button {
+  min-height:35px;
+  padding:8px 13px;
+  border:1px solid transparent;
+  border-radius:999px;
+  background:transparent;
+  color:var(--ot-rn-muted);
+  font-size:12px;
+  font-weight:700;
+}
+#app .ct-tabs button.on {
+  border-color:#dce6fb;
+  background:var(--ot-rn-blue-soft);
+  color:var(--ot-rn-blue);
+  box-shadow:none;
+}
+#app .ct-card {
+  gap:10px;
+  padding:15px;
+  border:1px solid var(--ot-rn-line);
+  border-radius:16px;
+  background:#fff;
+  box-shadow:0 3px 14px rgba(28,39,62,.045);
+}
+#app .ct-card h2,
+#app .ct-card h3 { color:var(--ot-rn-ink); letter-spacing:-.025em; }
+#app .ct-card p,
+#app .ct-card li,
+#app .ct-note { color:#727b88; }
+#app .ct-eyebrow { color:#7e8794; letter-spacing:.075em; }
+#app .ct-stats { gap:9px; }
+#app .ct-stats div {
+  border:1px solid var(--ot-rn-line);
+  border-radius:13px;
+  background:#f8f9fb;
+}
+#app .ct-stats b { color:var(--ot-rn-ink); }
+#app .ct-stats span { color:#7a8390; }
+#app .ct-btn {
+  min-height:40px;
+  border-color:var(--ot-rn-blue);
+  border-radius:999px;
+  background:var(--ot-rn-blue);
+  color:#fff;
+  font-weight:750;
+}
+#app .ct-btn.ghost {
+  border-color:var(--ot-rn-line);
+  background:#fff;
+  color:var(--ot-rn-ink);
+}
+#app .ct-msg {
+  border:1px solid var(--ot-rn-line);
+  border-radius:12px;
+  background:#fff;
+  color:var(--ot-rn-ink);
+}
+#app .ct-msg.err { border-color:#f0d9d1; background:#fff8f5; }
+#app .ct-bar { background:#edf0f4; }
+#app .ct-bar i { background:var(--ot-rn-blue); }
+#app .ct-req { border-color:var(--ot-rn-line); }
+#app .ct-toggle { border-color:var(--ot-rn-line); }
+#app .ct-toggle input { accent-color:var(--ot-rn-blue); }
+#app .ct-json {
+  border-color:var(--ot-rn-line);
+  border-radius:13px;
+  background:#f8f9fb;
+  color:var(--ot-rn-ink);
+}
+#app .ct-more { border-color:var(--ot-rn-line); }
+#app .ct-more summary { color:var(--ot-rn-ink); }
+#app .ct-more summary i { color:var(--ot-rn-muted); }
+#app .ct-empty { color:var(--ot-rn-muted); }
+#app .ct-skel { border:1px solid var(--ot-rn-line); border-radius:14px; background:#f1f3f6; animation:none; }
+@media(max-width:380px) {
+  #app .ct-wrap { padding-inline:11px; }
+  #app .ct-card { padding:12px; }
+  #app .ct-tabs { gap:4px; }
+  #app .ct-tabs button { padding-inline:10px; }
+}
