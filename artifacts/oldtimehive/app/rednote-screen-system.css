@@ -1,0 +1,356 @@
+/*
+ * Old Time — RedNote-inspired screen system.
+ * Layout and presentation only. The app's existing nav dock is deliberately excluded.
+ * Keep routes, markup actions, data, state, APIs and feature behavior unchanged.
+ */
+:root {
+  --ot-rn-canvas:#f7f8fa;
+  --ot-rn-paper:#fff;
+  --ot-rn-ink:#20232a;
+  --ot-rn-muted:#858b96;
+  --ot-rn-line:#eceef2;
+  --ot-rn-blue:#2858c7;
+  --ot-rn-blue-soft:#edf3ff;
+  --ot-rn-orange:#f0783e;
+  --ot-rn-shadow:0 3px 14px rgba(28,39,62,.055);
+  --ot-rn-radius:15px;
+}
+#app .phone { background:var(--ot-rn-canvas); }
+#app .screen:not(.post-viewer-screen):not(.story-viewer-screen):not(.camera-screen):not(.creative-editor-screen):not(.call-screen) {
+  background:var(--ot-rn-canvas);
+  color:var(--ot-rn-ink);
+}
+#app .screen:not(.post-viewer-screen):not(.story-viewer-screen):not(.camera-screen):not(.creative-editor-screen):not(.call-screen) :is(h1,h2,h3,h4) {
+  color:var(--ot-rn-ink);
+  letter-spacing:-.035em;
+}
+#app .screen:not(.post-viewer-screen):not(.story-viewer-screen):not(.camera-screen):not(.creative-editor-screen):not(.call-screen) :is(p,small,.muted,.subtle,.secondary-text) {
+  color:var(--ot-rn-muted);
+}
+#app .screen:not(.post-viewer-screen):not(.story-viewer-screen):not(.camera-screen):not(.creative-editor-screen):not(.call-screen) :is(.topbar,.community-header,.chat-header,.search-app-header,.profile-topbar,.settings-header,.notifications-header) {
+  background:rgba(255,255,255,.96);
+  border-color:var(--ot-rn-line);
+  box-shadow:none;
+  -webkit-backdrop-filter:saturate(1.35) blur(16px);
+  backdrop-filter:saturate(1.35) blur(16px);
+}
+#app .screen:not(.post-viewer-screen):not(.story-viewer-screen):not(.camera-screen):not(.creative-editor-screen):not(.call-screen) :is(input,textarea,select,.search-header-field,.discovery-search,.xe-bar,.field) {
+  border:1px solid #edf0f4;
+  border-radius:999px;
+  background:#f2f4f7;
+  color:var(--ot-rn-ink);
+  box-shadow:none;
+}
+#app .screen :is(input,textarea,select):focus-visible {
+  outline:3px solid rgba(40,88,199,.13);
+  border-color:rgba(40,88,199,.42);
+}
+#app .screen :is(.btn-primary,.primary-button,.followpill.on,.followchip.on,.profile-follow-button[aria-pressed="false"]) {
+  border-color:var(--ot-rn-blue);
+  background:var(--ot-rn-blue);
+  color:#fff;
+}
+#app .screen :is(.card,.panel,.surface-card,.community-post-card,.profile-post-card,.discovery-person,.chat-row,.notification-row,.setting-row,.saved-post-card,.places-card) {
+  border-color:var(--ot-rn-line);
+  border-radius:var(--ot-rn-radius);
+  box-shadow:var(--ot-rn-shadow);
+}
+#app .screen :is(.chip,.tag,.topic-chip,.interest-chip,.filter-chip,.discovery-category) {
+  border:1px solid var(--ot-rn-line);
+  border-radius:999px;
+  background:#fff;
+  color:var(--ot-rn-ink);
+}
+#app .screen :is(.chip.active,.tag.active,.topic-chip.active,.interest-chip.active,.filter-chip.active,.discovery-category.on) {
+  border-color:#dce6fb;
+  background:var(--ot-rn-blue-soft);
+  color:var(--ot-rn-blue);
+}
+#app .screen :focus-visible { outline-color:rgba(40,88,199,.72); }
+
+/* Home: RedNote's two-column editorial discovery wall.
+   Only the existing Following / Explore rectangular feed surfaces are affected. */
+#app .home-screen[data-rectangle-feed="true"] #feed {
+  display:block;
+  height:100%;
+  min-height:0;
+  padding:8px 10px 28px;
+  overflow-x:hidden;
+  overflow-y:auto;
+  column-count:2;
+  column-gap:10px;
+  column-fill:balance;
+  overscroll-behavior-y:contain;
+  -webkit-overflow-scrolling:touch;
+}
+#app .home-screen[data-rectangle-feed="true"] #feed > .home-feed-post-card,
+#app .home-screen[data-rectangle-feed="true"] #feed > .profile-post-card {
+  display:inline-block;
+  width:100%;
+  min-width:0;
+  margin:0 0 11px;
+  padding:0;
+  overflow:hidden;
+  break-inside:avoid;
+  vertical-align:top;
+  border:1px solid var(--ot-rn-line);
+  border-radius:15px;
+  background:#fff;
+  box-shadow:0 2px 12px rgba(28,39,62,.045);
+}
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-timeline-avatar { display:none !important; }
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-content {
+  display:flex;
+  min-width:0;
+  flex-direction:column;
+  gap:0;
+  padding:0;
+}
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media {
+  display:block;
+  order:0;
+  width:100%;
+  min-height:0;
+  height:auto !important;
+  max-height:none;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  border:0;
+  border-radius:0;
+  aspect-ratio:auto;
+  background:#eef0f4;
+}
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media > img,
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media > video,
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media > .ot-profile-cover-template,
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media > .profile-video-preview-fallback {
+  display:block;
+  width:100% !important;
+  height:auto !important;
+  min-height:0;
+  max-height:none;
+  object-fit:cover;
+}
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media.is-text {
+  display:grid;
+  min-height:118px;
+  aspect-ratio:4/3;
+  place-items:center;
+  padding:14px;
+}
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-detail {
+  order:2;
+  min-width:0;
+  padding:8px 9px 9px;
+}
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-byline {
+  display:flex;
+  min-width:0;
+  align-items:center;
+  gap:5px;
+  line-height:1.25;
+}
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-author {
+  overflow:hidden;
+  color:#343944;
+  font-size:11px;
+  font-weight:700;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-handle,
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-byline time { display:none; }
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-caption {
+  order:1;
+  display:-webkit-box;
+  margin:0;
+  padding:8px 9px 0;
+  overflow:hidden;
+  color:#30343c;
+  font-size:12px;
+  font-weight:650;
+  line-height:1.35;
+  overflow-wrap:anywhere;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+}
+#app .home-screen[data-rectangle-feed="true"] #feed .profile-post-media.is-video-preview::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+#app .home-screen[data-rectangle-feed="true"] #feed > :not(.home-feed-post-card):not(.profile-post-card) {
+  column-span:all;
+}
+#app .home-screen .home-discovery-header {
+  background:rgba(255,255,255,.97);
+  border-bottom:1px solid var(--ot-rn-line);
+}
+#app .home-screen .home-view-tabs { gap:clamp(18px,5vw,28px); }
+#app .home-screen .home-view-tab {
+  color:#8b909a;
+  font-size:14px;
+  font-weight:650;
+}
+#app .home-screen .home-view-tab.on {
+  color:var(--ot-rn-blue);
+  font-weight:800;
+}
+#app .home-screen .home-view-tab.on::after { background:var(--ot-rn-blue); }
+
+/* Search / Explore: retain existing sections and actions, refine the visual gallery. */
+#app .search-screen .search-app-header { gap:9px; padding-inline:14px; }
+#app .search-screen .search-header-field,
+#app .search-screen .search-header-field .xe-bar {
+  min-height:42px;
+  border:0;
+  border-radius:999px;
+  background:#f1f3f6;
+}
+#app .search-screen .xe-section { padding:12px 12px 4px; }
+#app .search-screen .xe-section > h2 {
+  margin:5px 2px 11px;
+  font-size:17px;
+  font-weight:780;
+}
+#app .search-screen .xe-grid {
+  display:block;
+  padding:0;
+  column-count:2;
+  column-gap:10px;
+}
+#app .search-screen .xe-grid > * {
+  display:inline-block;
+  width:100%;
+  margin:0 0 10px;
+  break-inside:avoid;
+  vertical-align:top;
+}
+#app .search-screen :is(.explore-video-card,.explore-feed-tile,.discovery-card,.xe-card,.search-result-card) {
+  overflow:hidden;
+  border:1px solid var(--ot-rn-line);
+  border-radius:14px;
+  background:#fff;
+  box-shadow:var(--ot-rn-shadow);
+}
+#app .search-screen .explore-video-card .places-post-media {
+  border-radius:0;
+  background:#eef0f4;
+}
+#app .search-screen .explore-video-card .places-post-detail { padding:8px 9px 9px; }
+#app .search-screen .explore-video-card .places-post-caption {
+  display:-webkit-box;
+  margin:0 0 7px;
+  overflow:hidden;
+  color:#30343c;
+  font-size:12px;
+  font-weight:650;
+  line-height:1.35;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+}
+#app .search-screen .explore-video-card .places-post-author { color:#555b66; font-size:10px; }
+#app .search-screen .explore-video-card .places-post-stats { color:var(--ot-rn-orange); font-size:10px; }
+#app .search-screen .discovery-tabs { background:#fff; border-color:var(--ot-rn-line); }
+#app .search-screen .discovery-tabs button.on { color:var(--ot-rn-blue); }
+#app .search-screen .discovery-tabs button.on::after { background:var(--ot-rn-blue); }
+
+/* Profiles: creator identity first, then a compact visual notebook grid. */
+#app .profile-screen .profile-page { background:#fff; }
+#app .profile-screen .profile-simple-hero,
+#app .profile-screen .profile-hero.profile-simple-hero { background:#fff !important; color:var(--ot-rn-ink); }
+#app .profile-screen .profile-simple-hero .profile-intro {
+  background:#fff;
+  color:var(--ot-rn-ink);
+}
+#app .profile-screen .profile-simple-hero .profile-name { color:var(--ot-rn-ink); }
+#app .profile-screen .profile-simple-hero .profile-meta-row { color:#727987; }
+#app .profile-screen .profile-simple-hero .profile-stats { gap:9px; }
+#app .profile-screen .profile-simple-hero .profile-stats > .profile-count-card {
+  border:1px solid var(--ot-rn-line);
+  border-radius:12px;
+  background:#f7f8fa;
+  box-shadow:none;
+}
+#app .profile-screen .profile-simple-hero .profile-primary-actions > button {
+  min-height:42px;
+  border-radius:999px;
+  font-size:12px;
+}
+#app .profile-screen .profile-simple-hero .profile-primary-actions > .profile-follow-button[aria-pressed="false"] {
+  background:var(--ot-rn-blue);
+  color:#fff;
+}
+#app .profile-screen .profile-post-grid { gap:8px; background:#fff; }
+#app .profile-screen .profile-post-card { overflow:hidden; border-radius:13px; background:#fff; box-shadow:none; }
+#app .profile-screen .profile-post-media { border-radius:12px; }
+
+/* Community, inbox, activity, settings and creator tools share the same surface grammar. */
+#app .community-screen .community-header,
+#app .chat-screen .chat-header,
+#app .search-screen .search-app-header,
+#app .notifications-screen .notifications-header,
+#app .account-settings-screen .settings-header {
+  border-bottom:1px solid var(--ot-rn-line);
+  background:rgba(255,255,255,.97);
+}
+#app .community-screen .community-post-card {
+  margin:9px 10px;
+  padding:12px;
+  border:1px solid var(--ot-rn-line);
+  border-radius:15px;
+  background:#fff;
+  box-shadow:var(--ot-rn-shadow);
+}
+#app .community-screen .community-post-avatar { border-radius:50%; }
+#app .community-screen .community-post-media,
+#app .community-screen .community-attachment-grid { overflow:hidden; border-radius:12px; }
+#app .chat-screen :is(.chat-row,.chat-inbox-row,.chat-list-item) {
+  border:0;
+  border-bottom:1px solid var(--ot-rn-line);
+  border-radius:0;
+  background:#fff;
+  box-shadow:none;
+}
+#app .notifications-screen :is(.notification-row,.notification-item,.activity-row) {
+  border:0;
+  border-bottom:1px solid var(--ot-rn-line);
+  border-radius:0;
+  background:#fff;
+  box-shadow:none;
+}
+#app .account-settings-screen :is(.setting-row,.setting-item,.settings-entry) {
+  border:1px solid var(--ot-rn-line);
+  border-radius:13px;
+  background:#fff;
+  box-shadow:none;
+}
+#app .screen :is(.modal,.sheet,.bottom-sheet,.dialog,.popover,.menu-panel) {
+  border-color:var(--ot-rn-line);
+  border-radius:22px 22px 0 0;
+  box-shadow:0 -12px 44px rgba(30,39,56,.13);
+}
+#app .screen :is(.empty-state,.empty,.placeholder-panel) {
+  border:1px solid var(--ot-rn-line);
+  border-radius:16px;
+  background:#fff;
+}
+#app .screen :is(.like-button,.post-like,.like-count,.engagement-like,.places-post-stats) { color:var(--ot-rn-orange); }
+
+/* Keep immersive media experiences immersive; only soften their surrounding chrome. */
+@media (max-width:600px) {
+  #app .home-screen[data-rectangle-feed="true"] #feed { padding-inline:9px; column-gap:9px; }
+  #app .home-screen[data-rectangle-feed="true"] #feed > .home-feed-post-card,
+  #app .home-screen[data-rectangle-feed="true"] #feed > .profile-post-card { margin-bottom:9px; border-radius:13px; }
+  #app .search-screen .xe-grid { column-gap:9px; }
+  #app .community-screen .community-post-card { margin:8px 9px; }
+}
+@media (min-width:700px) {
+  #app .home-screen[data-rectangle-feed="true"] #feed,
+  #app .search-screen .xe-grid { column-count:3; max-width:980px; margin-inline:auto; }
+}
+@media (prefers-reduced-motion:reduce) {
+  #app .screen * { scroll-behavior:auto !important; transition-duration:.01ms !important; animation-duration:.01ms !important; }
+}
